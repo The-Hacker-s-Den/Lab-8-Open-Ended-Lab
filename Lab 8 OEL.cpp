@@ -1,31 +1,27 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <string>
+
 using namespace std;
-//Petals of the Downpour
 
-int main_menu() {
-	//Start, How to play, Exit
-}
-int introduction() {
-	//Explain the forest, heartbloom and black rain
-}
+int welcome() {
+    const std::vector<std::string> banner = {
+        R"(  _____   _____   _____   _____  __  __          ___   _____ )",
+        R"( |  __ \ |  __ \ |_   _| / ____||  \/  |        |__ \ | ____|)",
+        R"( | |__) || |__) |  | |  | (___  | \  / |  ______   ) || |__  )",
+        R"( |  ___/ |  _  /   | |   \___ \ | |\/| | |______| / / |___ \ )",
+        R"( | |     | | \ \  _| |_  ____) || |  | |         / /_  ___) |)",
+        R"( |_|     |_|  \_\|_____||_____/ |_|  |_|        |____||____/ )"
+    };
 
-int chapter1() {
-	//Chapter 1
-}
+    for (const auto& line : banner) {
+        std::cout << line << '\n';
+    }
 
-int chapter2() {
-	//Chapter 2
-}
-
-int chapter3() {
-	//Chapter 3
+    return 0;
 }
 
-int chapter4() {
-	//Chapter 4
+int main() {
+	welcome();
+	return 0;
 }
-
-int chapter5() {
-	//Chapter 5
-}
-
