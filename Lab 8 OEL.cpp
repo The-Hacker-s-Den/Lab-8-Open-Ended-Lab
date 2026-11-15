@@ -146,7 +146,8 @@ void Level_1() {
 			else {
 				cout << "\n_____________________________________\n";
 				cout << "\n[ PHONE LOCK ]\n";
-				cout << "Encrypted Message: VSLGHU LQ WKH GDUN";
+				string cypher1 = "VSLGHU LQ WKH GDUN";
+				cout << "Encrypted Message: " << cypher1;
 				cout << "\nCaesar cipher shift: 3";
 				cout << "\n_____________________________________\n";
 				cout << "\nEnter the decrypted message with spaces: ";
@@ -157,10 +158,13 @@ void Level_1() {
 				//Make it lowercase for comparison
 
 				for (int i = 0; i < answer1.length(); i++) {
-					answer1[i] = tolower(answer1[i]);
+					answer1[i] = toupper(answer1[i]);
+					if (answer1[i] != ' ') {
+						answer1[i] += 3;
+					}
 				}
 
-				if (answer1 == "spider in the dark") {
+				if (answer1 == cypher1) {
 					cout << "\nPhone unlocked!";
 					phoneUnlocked = true;
 					cout << R"(
