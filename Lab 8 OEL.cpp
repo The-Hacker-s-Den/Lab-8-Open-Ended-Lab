@@ -60,9 +60,18 @@ void Level_1() {
 	char hint;
 	bool phoneFound = false, phoneUnlocked=false;
 	cout << R"(
-		CASE FILE #001
-		T H E   W E B
 
+		  ____    _    ____  _____   _____ ___ _     _____
+		 / ___|  / \  / ___|| ____| |  ___|_ _| |   | ____|
+		| |     / _ \ \___ \|  _|   | |_   | || |   |  _|
+		| |___ / ___ \ ___) | |___  |  _|  | || |___| |___
+		 \____/_/   \_\____/|_____| |_|   |___|_____|_____|
+
+					# 0 0 1
+
+				     T H E   W E B
+)";
+	cout << R"(		
 		============================================================
 
 		STATUS       : ACTIVE INVESTIGATION
@@ -111,6 +120,7 @@ void Level_1() {
 	std::cin.get();
 
 	while (phoneUnlocked == false) {
+		cout << "\n_____________________________________\n";
 		cout << "\n[ INVESTIGATION OPTIONS ]";
 		cout << "\n 1. Examine the victim's body";
 		cout << "\n 2. Search the room for evidence";
@@ -221,12 +231,23 @@ void Level_3() {
 	char hint;
 	string answer3;
 	cout << R"(
-		CASE FILE #003
-		T H E   M O T H
 
+		  ____    _    ____  _____   _____ ___ _     _____
+		 / ___|  / \  / ___|| ____| |  ___|_ _| |   | ____|
+		| |     / _ \ \___ \|  _|   | |_   | || |   |  _|
+		| |___ / ___ \ ___) | |___  |  _|  | || |___| |___
+		 \____/_/   \_\____/|_____| |_|   |___|_____|_____|
+
+					# 0 0 3
+
+				     T H E   M O T H
+)";
+	cout << R"(
 		============================================================
+
 		LOCATION : THEATRE
 		STATUS   : ACTIVE INVESTIGATION
+
 		============================================================
 
 		You cross-reference usernames from The Hollow and arrange
@@ -306,7 +327,7 @@ void Level_3() {
 					cout << "\n[ BATCH TAG DECODED ]\n";
 					cout << "ST JUDE PSYCHIATRIC CLINIC\n";
 					cout << R"(
-______________________________________________________________________________
+___________________________________________________________________________________
 The message leads you to a clinic where every victim associated with The Hollow 
 had visited to receive therapy. This establishes a connection between the victims, 
 their psychological treatment, and PRISM-25. You cross-reference the clinic's 
@@ -317,7 +338,7 @@ You discover that every victim had previously visited this clinic for therapy.
 Could PRISM-25 be connected to their treatment?
 
 Your next destination: ST JUDE PSYCHIATRIC CLINIC
-______________________________________________________________________________
+___________________________________________________________________________________
  )";
 				}
 				else {
