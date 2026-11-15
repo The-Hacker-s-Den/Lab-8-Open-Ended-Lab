@@ -57,8 +57,8 @@ void Level_1() {
 	char hint;
 	bool phoneFound = false, phoneUnlocked=false;
 	cout << R"(
-							CASE FILE #001
-							T H E   W E B
+		CASE FILE #001
+		T H E   W E B
 
 		============================================================
 
@@ -73,9 +73,14 @@ void Level_1() {
 		Every trace tells a story.
 		But some stories were never meant to be uncovered."
 
-		------------------------------------------------------------
+		------------------------------------------------------------)";
 
-							[ CRIME SCENE ]
+	cout << "\nPress Enter to view the crime scene...";
+	cin.ignore(10000, '\n');
+	cin.get(); 
+
+		cout<<R"(
+		[CRIME SCENE]
 
 		You slowly push open the bedroom door. The room is unusually silent.
 
@@ -96,17 +101,20 @@ void Level_1() {
 		Where would you like to begin?
 
 		=============================================================
+
 		PRESS ENTER TO START THE INVESTIGATION)";
-	cin >> get();
+
+	std::cin.get();
 
 	while (phoneUnlocked == false) {
 		cout << "\n[ INVESTIGATION OPTIONS ]";
 		cout << "\n 1. Examine the victim's body";
 		cout << "\n 2. Search the room for evidence";
 		cout << "\n 3. Attempt to unlock the phone";
-		cout << "\n Enter your choice: ";
+		cout << "\n\n Enter your choice: ";
 		cin >> choice;
 		if (choice == 1) {
+			cout << "\n_____________________________________\n";
 			cout << "\n[ FORENSIC EXAMINATION ]\n";
 			cout << "You kneel beside the body.\n";
 			cout << "The victim is a 24-year-old male.\n";
@@ -116,33 +124,40 @@ void Level_1() {
 			cout << "- Evidence of inhaled velvet spiders.\n";
 			cout << "- High concentrations of PRISM-25.\n";
 			cout << "\nYou record the findings in your notebook.\n";
+			cout << "\n_____________________________________\n";
 		}
 		else if (choice == 2) {
+			cout << "\n_____________________________________\n";
 			cout << "\n[ ROOM INVESTIGATION ]\n";
 			cout << "Thick webs cover the corners of the room.\n";
 			cout << "Several velvet spiders are visible.\n";
 			cout << "You find a mobile phone near the body.\n";
 			cout << "The device is password protected.\n";
+			cout << "\n_____________________________________\n";
 
 			phoneFound = true;
 		}
 		else if (choice == 3) {
 			if (phoneFound == false)
-				cout << "\n You must find the phone first.\n";
+				cout << "\n\n  You must find the phone first.\n";
 			else {
+				cout << "\n_____________________________________\n";
 				cout << "\n[ PHONE LOCK ]\n";
-				cout << "Ecrypted Message: VSLGHU LQ WKH GDUN";
-				cout << "\nCaeser cipher shift: 3";
-				cout << "\nEnter the decrypted message without spaces: ";
+				cout << "Encrypted Message: VSLGHU LQ WKH GDUN";
+				cout << "\nCaesar cipher shift: 3";
+				cout << "\n_____________________________________\n";
+				cout << "\nEnter the decrypted message without spaces in UPPER/LOWERCASE: ";
 				cin >> answer;
 				if (answer == "SPIDERINTHEDARK" || answer == "spiderinthedark") {
 					cout << "\nPhone unlocked!";
 					phoneUnlocked = true;
 					cout << R"(
+______________________________________________________________________________
 While scrolling through the phone, you discover a group called "THE HOLLOW".
 It is full of vulnerable and depressed individuals. A user named "The Lumos" 
-is offering members "help" through free dosages of a substance called PRISM-25. )";
-					cout << "\n LEVEL 1 COMPLETE!";
+is offering members "help" through free dosages of a substance called PRISM-25.
+______________________________________________________________________________
+ )";
 				}
 				else {
 					cout << "\n Incorrect password. Try Again!";
@@ -152,9 +167,9 @@ is offering members "help" through free dosages of a substance called PRISM-25. 
 					if (hint == 'y'||hint=='Y') {
 						if (hintsUsed < 3) {
 							hintsUsed++;
-							if (hintsUsed == 1) cout << "\n Hint 1: You notice a broken clock, running three hours behind.";
-							else if (hintsUsed == 2) cout << "\n Hint 2: You find a note. It says, \"every letter has moved three places forward.\"";
-							else if (hintsUsed == 3) cout << "\n Hint 3: A diary reveals, move each letter three steps backward. V becomes S.";
+							if (hintsUsed == 1) cout << "\n Hint 1: You notice a broken clock, running three hours behind.\n";
+							else if (hintsUsed == 2) cout << "\n Hint 2: You find a note. It says, \"every letter has moved three places forward.\"\n";
+							else if (hintsUsed == 3) cout << "\n Hint 3: A diary reveals, move each letter three steps backward. V becomes S.\n";
 						}
 						else cout << "\n You have used all the hints available.";
 					}
@@ -167,7 +182,12 @@ is offering members "help" through free dosages of a substance called PRISM-25. 
 	}
 		score_level1 = max(0, 100 - (10 * incorrect) - (20 * hintsUsed));
 		totalscore += score_level1;
-
+		cout << "\n================================\n";
+		cout << "       LEVEL 1 COMPLETE\n";
+		cout << "================================\n";
+		cout << "       SCORE: " << score_level1 << " / 100\n";
+		cout << "================================\n";
+		
 }
 
 void Level_2() {
