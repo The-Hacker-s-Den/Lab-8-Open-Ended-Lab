@@ -286,8 +286,47 @@ void Level_3() {
 			else {
 				cout << "\n_____________________________________\n";
 				cout << "\n[ ENCRYPTED BATCH TAG ]\n";
-				cout << "18 1F 01 1E 0F 0E 1B 18 12 08 03 02\n";
-				cout << "0A 1F 19 02 08 08 07 02 05 02 08\n";
+				//cout << "18 1F 01 1E 0F 0E 1B 18 12 08 03 02\n";
+				//cout << "0A 1F 19 02 08 08 07 02 05 02 08\n";
+				int hex_values[] = { 0x18, 0x1F, 0x6B, 0x01, 0x1E, 0x0F, 0x0E, 0x6B, 0x1B,
+					0x18, 0x12, 0x08, 0x03, 0x02, 0x0A, 0x1F, 0x19, 0x02, 0x08, 0x6B,
+					0x08, 0x07, 0x02, 0x05, 0x02, 0x08 };
+
+				cout << "The encrypted batch tag in hex is: \n "<<hex;
+
+				const int size_hex_cypher = sizeof(hex_values) / sizeof(hex_values[0]);
+
+				int cypher3_solved[size_hex_cypher];
+
+				for (int i = 0; i < size_hex_cypher; i++) {
+					cout << hex_values[i] << " ";
+				}
+
+				cout << dec;
+
+				for (int i = 0; i < size_hex_cypher; i++) {
+					
+					//Commented out the if statement to allow for spaces in the decrypted text
+
+					/*if (hex_values[i] != 0x20) {
+						cypher3_solved[i] = hex_values[i] ^ 75; // XOR with 75
+					}
+					else 
+					{
+						cypher3_solved[i] = 32; // Space character
+					}
+					*/ 
+					cypher3_solved[i] = hex_values[i] ^ 75; //
+				}
+
+				//cout << "\nThe decrypted batch tag in decimal is: \n";
+
+				/*for (int i = 0; i < size_hex_cypher; i++) {
+					cout << cypher3_solved[i] << " ";
+				}
+				*/
+
+
 				cout << "\nCipher: Single-character XOR";
 				cout << "\nKey: K (ASCII decimal 75, hexadecimal 4B)";
 				cout << "\nConvert each hex value to a number, XOR";
@@ -298,10 +337,25 @@ void Level_3() {
 
 				//Make it lowercase for comparison
 
-				for (int i = 0; i < answer3.length(); i++)
+				for (int i = 0; i < answer3.length(); i++) {
 					answer3[i] = toupper(answer3[i]);
+				}
+				bool answer3_true = false;
 
-				if (answer3 == "ST JUDE PSYCHIATRIC CLINIC") {
+				int answer3_accuracy = 0;
+
+				for (int i = 0; i < size_hex_cypher; i++) {
+					if (answer3[i] == cypher3_solved[i]) {
+						answer3_accuracy++;
+					}
+				}
+
+				if (answer3_accuracy == size_hex_cypher) {
+					answer3_true = true;
+				}
+
+
+				if (answer3_true == true) {
 					tagDecoded = true;
 					cout << "\n[ BATCH TAG DECODED ]\n";
 					cout << "ST JUDE PSYCHIATRIC CLINIC\n";
