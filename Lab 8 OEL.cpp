@@ -11,7 +11,7 @@ void Level_2();
 void Level_3();
 void timer(string*, int&);
 int main_menu();
-int totalscore = 0, score_level1 = 0;
+int totalscore = 0, score_level1 = 0, score_level3=0;
 
 
 int main() {
@@ -20,6 +20,7 @@ int main() {
 	if (main_menu_choice == 1)
 	{
 		Level_1();
+		Level_3();
 	}
 	return 0;
 }
@@ -76,9 +77,10 @@ void Level_1() {
 		Every trace tells a story.
 		But some stories were never meant to be uncovered."
 
-		------------------------------------------------------------)";
+		------------------------------------------------------------
+		Press Enter to view the crime scene...
+)";
 
-	cout << "\nPress Enter to view the crime scene...";
 	cin.ignore(10000, '\n');
 	cin.get(); 
 
@@ -204,6 +206,7 @@ ______________________________________________________________________________
 		cout << "       LEVEL 1 COMPLETE\n";
 		cout << "================================\n";
 		cout << "       SCORE: " << score_level1 << " / 100\n";
+		cout << "       Puzzle time: " << time1 << " seconds\n";
 		cout << "================================\n";
 		
 }
@@ -214,7 +217,160 @@ void Level_2() {
 }
 
 void Level_3() {
-	// Level 3 code here
+	bool tagDecoded = false, packFound=false;
+	int choice = 0, time3 = 0, hintsUsed = 0,incorrect=0;
+	char hint;
+	string answer3;
+	cout << R"(
+		CASE FILE #003
+		T H E   M O T H
+
+		============================================================
+		LOCATION : THEATRE
+		STATUS   : ACTIVE INVESTIGATION
+		============================================================
+
+		You cross-reference usernames from The Hollow and arrange
+		to meet a theatre lighting technician.
+
+		But when you reach the theatre, you are too late.
+
+		The technician lies motionless beneath the studio lamps.
+		A harsh white light floods the silent stage.
+
+		Another victim. Another connection to PRISM-25.
+		)";
+	while (tagDecoded == false) {
+		cout << "\n_____________________________________\n";
+		cout << "\n[ INVESTIGATION OPTIONS ]";
+		cout << "\n1. Examine the victim";
+		cout << "\n2. Inspect the studio lamps";
+		cout << "\n3. Search near the body";
+		cout << "\n4. Decode the pharmacy batch tag";
+		cout << "\n\nEnter your choice: ";
+		cin >> choice;
+
+		if (choice == 1) {
+			cout << "\n_____________________________________\n";
+			cout << "\n[ FORENSIC EXAMINATION ]\n";
+			cout << "The victim worked as a lighting technician.\n";
+			cout << "The report records severe eye damage.\n";
+			cout << "PRISM-25 is linked to the victim's symptoms.\n";
+			cout << "You record the similarities to the first case.\n";
+			cout << "\n_____________________________________\n";
+		}
+		else if (choice == 2) {
+			cout << "\n_____________________________________\n";
+			cout << "\n[ STUDIO LAMPS ]\n";
+			cout << "You notice high-wattage lamps facing the stage.\n";
+			cout << "Upon examining them, you discover evidence\n";
+			cout << "suggesting the victim stared directly into\n";
+			cout << "the intense lights for a prolonged period.\n";
+			cout << "You recall an unusual symptom of PRISM-25:\n";
+			cout << "an uncontrollable attraction to light.\n";
+			cout << "\n_____________________________________\n";
+		}
+		else if (choice == 3) {
+			cout << "\n_____________________________________\n";
+			cout << "\n[ EVIDENCE COLLECTED ]\n";
+			cout << "A silver foil blister pack lies beside the body.\n";
+			cout << "An encrypted pharmacy batch tag is stamped on it.\n";
+			cout << "The packaging suggests a medical facility.\n";
+			cout << "\n_____________________________________\n";
+
+			packFound = true;
+		}
+		else if (choice == 4) {
+			if (packFound == false) {
+				cout << "\n\nFind the blister pack first.\n";
+			}
+			else {
+				cout << "\n_____________________________________\n";
+				cout << "\n[ ENCRYPTED BATCH TAG ]\n";
+				cout << "18 1F 01 1E 0F 0E 1B 18 12 08 03 02\n";
+				cout << "0A 1F 19 02 08 08 07 02 05 02 08\n";
+				cout << "\nCipher: Single-character XOR";
+				cout << "\nKey: K (ASCII decimal 75, hexadecimal 4B)";
+				cout << "\nConvert each hex value to a number, XOR";
+				cout << "\nwith 75, then read the resulting ASCII letter.";
+				cout << "\n_____________________________________\n";
+				cout << "\n\nEnter the decrypted text with spaces: ";
+				timer(&answer3, time3);
+
+				//Make it lowercase for comparison
+
+				for (int i = 0; i < answer3.length(); i++)
+					answer3[i] = toupper(answer3[i]);
+
+				if (answer3 == "ST JUDE PSYCHIATRIC CLINIC") {
+					tagDecoded = true;
+					cout << "\n[ BATCH TAG DECODED ]\n";
+					cout << "ST JUDE PSYCHIATRIC CLINIC\n";
+					cout << R"(
+______________________________________________________________________________
+The message leads you to a clinic where every victim associated with The Hollow 
+had visited to receive therapy. This establishes a connection between the victims, 
+their psychological treatment, and PRISM-25. You cross-reference the clinic's 
+patient records with the victims associated with The Hollow.
+
+You discover that every victim had previously visited this clinic for therapy.
+
+Could PRISM-25 be connected to their treatment?
+
+Your next destination: ST JUDE PSYCHIATRIC CLINIC
+______________________________________________________________________________
+ )";
+				}
+				else {
+					incorrect++;
+					cout << "\nIncorrect answer. Try again.\n";
+					cout << "Do you want a hint? (y/n): ";
+					cin >> hint;
+					if (hint == 'y' || hint == 'Y') {
+						if (hintsUsed < 3) {
+							hintsUsed++;
+
+							if (hintsUsed == 1) {
+								cout << "\n[ HINT 1: HEXADECIMAL ]\n";
+								cout << "Hexadecimal is a base-16 number system.\n";
+								cout << "Convert each hex value into decimal first.\n";
+								cout << "Example: 18 (hex) = 1 * 16 + 8 = 24.\n";
+							}
+							else if (hintsUsed == 2) {
+								cout << "\n[ HINT 2: XOR OPERATION ]\n";
+								cout << "XOR compares two binary bits.\n";
+								cout << "Same bits give 0, different bits give 1.\n";
+								cout << "Use the XOR operator (^) with key 75.\n";
+								cout << "Example: 24 ^ 75 = 83.\n";
+							}
+							else if (hintsUsed == 3) {
+								cout << "\n[ HINT 3: ASCII DECRYPTION ]\n";
+								cout << "Convert your XOR result into an ASCII letter.\n";
+								cout << "83 = S, 84 = T.\n";
+							}
+						}
+						else {
+							cout << "\n You have used all available hints.\n";
+						}
+					}
+				}
+			}
+
+
+		}
+		else
+			cout << "\n INVALID! Enter a number from 1 to 4. \n";
+	}
+	score_level3 = max(0, 100 - (10 * incorrect) - (20 * hintsUsed));
+	totalscore += score_level3;
+	cout << "\n================================\n";
+	cout << "       LEVEL 3 COMPLETE\n";
+	cout << "================================\n";
+	cout << "       SCORE: " << score_level3 << " / 100\n";
+	cout << "       Puzzle time: " << time3 << " seconds\n";
+	cout << "================================\n";
+
+
 }
 
 void timer(string* timed_answer, int& time) {
