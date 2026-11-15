@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <string>
 #include<chrono>
 #include<algorithm>
@@ -369,6 +368,16 @@ ______________________________________________________________________________
 	cout << "       SCORE: " << score_level3 << " / 100\n";
 	cout << "       Puzzle time: " << time3 << " seconds\n";
 	cout << "================================\n";
+
+
+}
+
+void Level_4() {
+	int choice = 0, hintsUsed = 0, incorrect = 0;
+	string answer4;
+	int time4 = 0;
+
+	char hint;
 
 
 }
