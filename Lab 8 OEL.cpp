@@ -20,20 +20,18 @@ int welcome() {
 
     return 0;
 }
-
-int Level_1() {
+void Level_1() {
 	// Level 1 code here
-	return 0;
+
 }
 
-int Level_2() {
+void Level_2() {
 	// Level 2 code here
-	return 0;
+	
 }
 
-int Level_3() {
+void Level_3() {
 	// Level 3 code here
-	return 0;
 }
 
 
