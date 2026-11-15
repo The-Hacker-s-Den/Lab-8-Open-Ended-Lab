@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include<chrono>
 
 using namespace std;
 
@@ -36,7 +37,22 @@ int Level_3() {
 	return 0;
 }
 
+int timer() {
+	int time;
 
+	auto start = chrono::steady_clock::now(); // Record the start time
+
+	// Simulate some user input
+	// cin >> answer;
+
+	auto end = chrono::steady_clock::now();// Record the end time
+
+	chrono::duration<double> duration = end - start; // Calculate the duration in seconds
+
+	time = duration.count();// Convert duration to seconds
+
+	return time;
+}
 
 int main_menu() {
     cout << "Options :\n";
