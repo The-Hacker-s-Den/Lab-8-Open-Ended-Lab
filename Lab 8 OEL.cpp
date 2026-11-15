@@ -2,8 +2,20 @@
 #include <vector>
 #include <string>
 #include<chrono>
-
 using namespace std;
+int welcome();
+void Level_1();
+void Level_2();
+void Level_3();
+int timer();
+int main_menu();
+
+int main() {
+	welcome();
+	int main_menu_choice = main_menu();
+	return 0;
+}
+
 
 int welcome() {
     const std::vector<std::string> banner = {
@@ -66,8 +78,3 @@ int main_menu() {
 	return main_menu_choice;
 }
 
-int main() {
-	welcome();
-	int main_menu_choice = main_menu();
-	return 0;
-}
