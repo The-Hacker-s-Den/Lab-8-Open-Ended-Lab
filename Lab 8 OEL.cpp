@@ -33,6 +33,21 @@ int welcome() {
 
     return 0;
 }
+
+int main_menu() {
+	cout << "Options :\n";
+	cout << "1. Start the Game" << endl;
+	cout << "2. How to play" << endl;
+	cout << "3. About" << endl;
+	cout << "4. Credits" << endl;
+	cout << "5. Exit" << endl;
+
+	cout << "Enter your choice: ";
+	int main_menu_choice;
+	cin >> main_menu_choice;
+	return main_menu_choice;
+}
+
 void Level_1() {
 	// Level 1 code here
 
@@ -64,17 +79,4 @@ int timer() {
 	return time;
 }
 
-int main_menu() {
-    cout << "Options :\n";
-	cout << "1. Start the Game" << endl;
-	cout << "2. How to play" << endl;
-	cout << "3. About" << endl;
-	cout << "4. Credits" << endl;
-	cout << "5. Exit" << endl;
-
-	cout << "Enter your choice: ";
-	int main_menu_choice;
-	cin >> main_menu_choice;
-	return main_menu_choice;
-}
 
