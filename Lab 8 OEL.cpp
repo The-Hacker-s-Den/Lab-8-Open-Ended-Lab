@@ -217,6 +217,16 @@ void Level_3() {
 	// Level 3 code here
 }
 
+void Level_4() {
+	int choice = 0, hintsUsed = 0, incorrect = 0;
+	string answer4;
+	int time4 = 0;
+
+	char hint;
+
+
+}
+
 void timer(string* timed_answer, int& time) {
 
 	auto start = chrono::steady_clock::now(); // Record the start time
