@@ -3,14 +3,16 @@
 #include <string>
 #include<chrono>
 #include<algorithm>
+#include<cctype>
 using namespace std;
 int welcome();
 void Level_1();
 void Level_2();
 void Level_3();
-int timer();
+void timer(string*, int&);
 int main_menu();
 int totalscore = 0, score_level1 = 0;
+
 
 int main() {
 	welcome();
@@ -52,8 +54,9 @@ int main_menu() {
 
 void Level_1() {
 	int choice = 0, hintsUsed = 0, incorrect=0;
-	
-	string answer;
+	string answer1;
+	int time1 = 0;
+
 	char hint;
 	bool phoneFound = false, phoneUnlocked=false;
 	cout << R"(
@@ -146,9 +149,18 @@ void Level_1() {
 				cout << "Encrypted Message: VSLGHU LQ WKH GDUN";
 				cout << "\nCaesar cipher shift: 3";
 				cout << "\n_____________________________________\n";
-				cout << "\nEnter the decrypted message without spaces in UPPER/LOWERCASE: ";
-				cin >> answer;
-				if (answer == "SPIDERINTHEDARK" || answer == "spiderinthedark") {
+				cout << "\nEnter the decrypted message with spaces: ";
+
+				timer(&answer1, time1);
+				cout << "\nTime taken: " << time1 << " seconds";
+
+				//Make it lowercase for comparison
+
+				for (int i = 0; i < answer1.length(); i++) {
+					answer1[i] = tolower(answer1[i]);
+				}
+
+				if (answer1 == "spider in the dark") {
 					cout << "\nPhone unlocked!";
 					phoneUnlocked = true;
 					cout << R"(
@@ -165,6 +177,7 @@ ______________________________________________________________________________
 					cout << "\n Do you want a hint? (y/n)";
 					cin >> hint;
 					if (hint == 'y'||hint=='Y') {
+						choice = 3;
 						if (hintsUsed < 3) {
 							hintsUsed++;
 							if (hintsUsed == 1) cout << "\n Hint 1: You notice a broken clock, running three hours behind.\n";
@@ -173,6 +186,7 @@ ______________________________________________________________________________
 						}
 						else cout << "\n You have used all the hints available.";
 					}
+
 
 				}
 			}
@@ -199,21 +213,18 @@ void Level_3() {
 	// Level 3 code here
 }
 
-int timer() {
-	int time;
+void timer(string* timed_answer, int& time) {
 
 	auto start = chrono::steady_clock::now(); // Record the start time
 
-	// Simulate some user input
-	// cin >> answer;
+	getline(cin >> ws, *timed_answer); // Wait for user input
 
 	auto end = chrono::steady_clock::now();// Record the end time
 
 	chrono::duration<double> duration = end - start; // Calculate the duration in seconds
 
-	time = duration.count();// Convert duration to seconds
+	time += (int)duration.count();// Convert duration to seconds
 
-	return time;
 }
 
 
