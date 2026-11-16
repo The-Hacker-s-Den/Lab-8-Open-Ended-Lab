@@ -374,6 +374,7 @@ void Level_3() {
 				if (answer3_accuracy == size_hex_cypher) {
 					answer3_true = true;
 				}
+				answer3_accuracy = 0;
 
 
 				if (answer3_true == true) {
