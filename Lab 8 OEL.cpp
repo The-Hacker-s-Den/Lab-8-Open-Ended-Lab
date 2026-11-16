@@ -221,8 +221,160 @@ ______________________________________________________________________________
 }
 
 void Level_2() {
-	// Level 2 code here
-	
+		int choice = 0, choice2 = 0, hintsUsed = 0, incorrect = 0;
+
+	string answer2;
+	char hint;
+	bool notebookFound = false, notebookDeciphered = false;
+	cout << R"(
+		CASE FILE #002
+		T H E   U N D E R C O V E R   D R O P 
+
+		============================================================
+
+		STATUS       : UNDERCOVER MEMBER OF "THE HOLLOW"
+		LOCATION     : THE WAREHOUSE
+		CAUSE        : MEET "THE LUMOS"
+
+		============================================================
+
+		"Every mask hides a motive.
+     Every motive demands a price.
+     And tonight, you have to wear the face of the prey to catch the predator."
+
+		------------------------------------------------------------)";
+
+	cout << "\nPress Enter to go inside the warehouse...";
+	cin.ignore(10000, '\n');
+	cin.get();
+
+	cout << R"(
+		[INSIDE THE WAREHOUSE]
+
+		Using the victim's phone, you see "THE LUMOS" has sent a message in "THE HOLLOW" group chat.
+
+		The message read:
+		"Abandoned Textile Warehouse.
+     5am sharp. Get enlighted release the weight on the heart.
+     Free your mind, free your soul."
+
+		You disguise yourself as a reckoned individual, memeber of "THE HOLLOW" group. 
+    You open the rusted warehouse door. The building is pitch black.
+
+		"THE LUMOUS" had suspected your arrival and is gone,fled before your arrival in a hurry,leaving behind scattered supplies.
+    Inside the warehouse, a single bulb swings overhead, casting long shadows across the floor.
+		Heavy crates and chemical glassware sit abandoned on a wooden workbench.
+
+		Fresh boot prints lead toward the back exit.
+		Something about this setup feels like a trap.
+
+		You take out your investigation notebook.
+
+		Where would you like to begin?
+
+		=============================================================
+
+		PRESS ENTER TO START THE INVESTIGATION)";
+
+
+	std::cin.get();
+
+	while (notebookDeciphered == false) {
+		cout << "\n[ INVESTIGATION OPTIONS ]";
+		cout << "\n 1. Examine the chemical glassware";
+		cout << "\n 2. Search the warehouse for clues";
+		cout << "\n 3. Decipher the message in the book";
+		cout << "\n\n Enter your choice: ";
+		cin >> choice;
+		if (choice == 1) {
+			cout << "\n_____________________________________\n";
+			cout << "\n[ CHEMICAL TRACE EXAMINATION ]\n";
+			cout << "You examine the chemical glassware.\n";
+			cout << "The glassware contains traces of an LSD, PRISM-25.\n";
+			cout << "\nThe Examination report reveals:\n";
+			cout << "PRISM-25 was stored here not manufactured here.\n";
+			cout << "\n_____________________________________\n";
+		}
+		else if (choice == 2) {
+			cout << "\n_____________________________________\n";
+			cout << "\n[ WAREHOUSE INVESTIGATION ]\n";
+			cout << "The warehouse has tiny holes in its structure allowing little morning rays of light pass through.\n";
+			cout << "It has 2 doors, a wider one for entry and and a little one at the back for exit.\n";
+			cout << "Muddy boot prints lead toward the back exit.\n";
+			cout << "You find a Notebook that seemed to belong to 'The Lumos' near the workbench.\n";
+			cout << "The notebook contains a scrambled supplier entry.\n";
+			cout << "The message is written in a reverse alphabet cipher..\n";
+			cout << "\n_____________________________________\n";
+
+			notebookFound = true;
+		}
+		else if (choice == 3) {
+			if (notebookFound == false)
+				cout << "\n\n  You must find the notebook first.\n";
+			else {
+				cout << "\n_____________________________________\n";
+				cout << "\n[ NOTEBOOK ENTRY ]\n";
+				cout << "Encrypted Message: XSVNRHGZORZHEVHKVIXLWV8492";
+				cout << "\nCipher Type: Atbash (Reverse Alphabet)";
+				cout << "\n_____________________________________\n";
+				cout << "\nEnter the decrypted message without spaces in UPPER/LOWERCASE: ";
+				cin >> answer2;
+				if (answer2 == "CHEMISTALIASVESPERCODE8492" || answer2 == "chemistaliasvespercode8492") {
+					cout << "\nNotebook deciphered!";
+					notebookDeciphered = true;
+					cout << R"(
+______________________________________________________________________________
+You dont know what to do with the information you have just found. 
+Do you wish to:
+1) Store the information in your notebook,
+2) Or do you wish to follow the boot prints to the back exit?
+______________________________________________________________________________
+ )";
+					cout << "Enter a choice (1 or 2): ";
+					cin >> choice2;
+					if (choice2 == 1) {
+						cout << "\nYou have stored the information in your notebook.";
+					}
+					else if (choice2 == 2) {
+						cout << "\nYou follow the boot prints to the back exit. However 'THE LUMOUS' is no where to be found.";
+					}
+					else {
+						cout << "\nInvalid choice. You have completed Level 2.";
+					}
+				}
+				}
+				else {
+					cout << "\n Incorrect. Try Again!";
+					incorrect++;
+					cout << "\n Do you want a hint? (y/n)";
+					cin >> hint;
+					if (hint == 'y' || hint == 'Y') {
+						if (hintsUsed < 3) {
+							hintsUsed++;
+							if (hintsUsed == 1) {
+								cout << "\n Hint 1: You notice a message on the cover of the notebook.\n";
+								cout << "\n         Your fate will mirror you.\n";
+							}
+							else if (hintsUsed == 2) cout << "\n Hint 2: The alphabet is reversed: A becomes Z, B becomes Y, C becomes X.\n"
+							else if (hintsUsed == 3) cout << "\n Hint 3: X = C, S = H, V = E. The first word is CHEMIST, and numbers stay the same.\n";
+						}
+						else cout << "\n You have used all the hints available.";
+					}
+
+				}
+			}
+		}
+		else
+			cout << "\n INVALID! Enter a number from 1 to 3.";
+	}
+	score_level1 = max(0, 100 - (10 * incorrect) - (20 * hintsUsed));
+	totalscore += score_level1;
+	cout << "\n================================\n";
+	cout << "       LEVEL 2 COMPLETE\n";
+	cout << "================================\n";
+	cout << "       SCORE: " << score_level1 << " / 100\n";
+	cout << "================================\n";
+
 }
 
 void Level_3() {
