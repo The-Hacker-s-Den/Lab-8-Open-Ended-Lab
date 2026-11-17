@@ -221,14 +221,24 @@ ______________________________________________________________________________
 }
 
 void Level_2() {
-		int choice = 0, choice2 = 0, hintsUsed = 0, incorrect = 0;
+	int choice = 0, choice2 = 0, hintsUsed = 0, incorrect = 0;
 
 	string answer2;
 	char hint;
 	bool notebookFound = false, notebookDeciphered = false;
 	cout << R"(
-		CASE FILE #002
-		T H E   U N D E R C O V E R   D R O P 
+
+
+						  ____    _    ____  _____   _____ ___ _     _____
+		 / ___|  / \  / ___|| ____| |  ___|_ _| |   | ____|
+		| |     / _ \ \___ \|  _|   | |_   | || |   |  _|
+		| |___ / ___ \ ___) | |___  |  _|  | || |___| |___
+		 \____/_/   \_\____/|_____| |_|   |___|_____|_____|
+
+
+                     #002
+
+	     	T H E   U N D E R C O V E R   D R O P 
 
 		============================================================
 
@@ -342,7 +352,6 @@ ______________________________________________________________________________
 						cout << "\nInvalid choice. You have completed Level 2.";
 					}
 				}
-				}
 				else {
 					cout << "\n Incorrect. Try Again!";
 					incorrect++;
@@ -355,7 +364,7 @@ ______________________________________________________________________________
 								cout << "\n Hint 1: You notice a message on the cover of the notebook.\n";
 								cout << "\n         Your fate will mirror you.\n";
 							}
-							else if (hintsUsed == 2) cout << "\n Hint 2: The alphabet is reversed: A becomes Z, B becomes Y, C becomes X.\n"
+							else if (hintsUsed == 2) cout << "\n Hint 2: The alphabet is reversed: A becomes Z, B becomes Y, C becomes X.\n";
 							else if (hintsUsed == 3) cout << "\n Hint 3: X = C, S = H, V = E. The first word is CHEMIST, and numbers stay the same.\n";
 						}
 						else cout << "\n You have used all the hints available.";
@@ -366,17 +375,15 @@ ______________________________________________________________________________
 		}
 		else
 			cout << "\n INVALID! Enter a number from 1 to 3.";
-	}
-	score_level1 = max(0, 100 - (10 * incorrect) - (20 * hintsUsed));
-	totalscore += score_level1;
-	cout << "\n================================\n";
-	cout << "       LEVEL 2 COMPLETE\n";
-	cout << "================================\n";
-	cout << "       SCORE: " << score_level1 << " / 100\n";
-	cout << "================================\n";
-
+		score_level1 = max(0, 100 - (10 * incorrect) - (20 * hintsUsed));
+		totalscore += score_level1;
+		cout << "\n================================\n";
+		cout << "       LEVEL 2 COMPLETE\n";
+		cout << "================================\n";
+		cout << "       SCORE: " << score_level1 << " / 100\n";
+		cout << "================================\n";
 }
-
+}
 void Level_3() {
 	bool tagDecoded = false, packFound=false;
 	int choice = 0, time3 = 0, hintsUsed = 0,incorrect=0;
