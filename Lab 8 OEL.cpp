@@ -237,7 +237,7 @@ void Level_2() {
 		 \____/_/   \_\____/|_____| |_|   |___|_____|_____|
 
 
-                     #002
+         #002
 
 	     	T H E   U N D E R C O V E R   D R O P 
 
@@ -262,7 +262,8 @@ void Level_2() {
 	cout << R"(
 		[INSIDE THE WAREHOUSE]
 
-		Using the victim's phone, you see "THE LUMOS" has sent a message in "THE HOLLOW" group chat.
+		Using the victim's phone,
+    you see "THE LUMOS" has sent a message in "THE HOLLOW" group chat.
 
 		The message read:
 		"Abandoned Textile Warehouse.
@@ -314,14 +315,16 @@ void Level_2() {
 		else if (choice == 2) {
 			cout << "\n__________________________________________________\n";
 			cout << "\n[ WAREHOUSE INVESTIGATION ]\n";
-			cout << "The warehouse has tiny holes in its structure allowing little morning rays of light pass through.\n";
-			cout << "It has 2 doors, a wider one for entry and and a little one at the back for exit.\n";
+			cout << "The warehouse has tiny holes in its structure,\n";
+			cout << "allowing little morning rays of light pass through.\n";
+			cout << "It has 2 doors, \n";
+			cout << "a wider one for entry and and a little one at the back for exit.\n";
 			cout << "Muddy boot prints lead toward the back exit.\n";
-			cout << "You find a Notebook that seemed to belong to 'The Lumos' near the workbench.\n";
+			cout << "You find a Notebook near the workbench.\n";
+			cout << "That seemed to belong to 'The Lumos'.\n";
 			cout << "The notebook contains a scrambled supplier entry.\n";
 			cout << "The message is written in a reverse alphabet cipher.\n";
 			cout << "\n__________________________________________________\n";
-
 			notebookFound = true;
 		}
 		else if (choice == 3) {
@@ -381,14 +384,16 @@ ______________________________________________________________________________
 		}
 		else
 			cout << "\n INVALID! Enter a number from 1 to 3.";
-		score_level2 = max(0, 100 - (10 * incorrect) - (20 * hintsUsed));
-		totalscore += score_level2;
-		cout << "\n================================\n";
-		cout << "       LEVEL 2 COMPLETE\n";
-		cout << "================================\n";
-		cout << "       SCORE: " << score_level2 << " / 100\n";
-		cout << "================================\n";
-}
+		if (notebookFound == true && notebookDeciphered == true) {
+			score_level2 = max(0, 100 - (10 * incorrect) - (20 * hintsUsed));
+			totalscore += score_level2;
+			cout << "\n================================\n";
+			cout << "       LEVEL 2 COMPLETE\n";
+			cout << "================================\n";
+			cout << "       SCORE: " << score_level2 << " / 100\n";
+			cout << "================================\n";
+		}
+	}
 }
 void Level_3() {
 	bool tagDecoded = false, packFound=false;
