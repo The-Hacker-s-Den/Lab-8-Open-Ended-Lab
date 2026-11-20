@@ -62,51 +62,73 @@ int ciphers_help(){
 			system("cls");
 			cout << R"(
 			
-			  	  ____      _      _____   ____      _      ____          ____    ___   ____    _   _   _____   ____  
-				 / ___|    / \    | ____| / ___|    / \    |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
-				| |       / _ \   |  _|   \___ \   / _ \   | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
-				| |___   / ___ \  | |___   ___) | / ___ \  |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
-				 \____| /_/   \_\ |_____| |____/ /_/   \_\ |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
+					  ____      _      _____   ____      _      ____  
+					 / ___|    / \    | ____| / ___|    / \    |  _ \ 
+					| |       / _ \   |  _|   \___ \   / _ \   | |_) |
+					| |___   / ___ \  | |___   ___) | / ___ \  |  _ < 
+					 \____| /_/   \_\ |_____| |____/ /_/   \_\ |_| \_\
+                                                  
+					  ____   ___   ____    _   _   _____   ____  
+					 / ___| |_ _| |  _ \  | | | | | ____| |  _ \ 
+					| |      | |  | |_) | | |_| | |  _|   | |_) |
+					| |___   | |  |  __/  |  _  | | |___  |  _ < 
+					 \____| |___| |_|     |_| |_| |_____| |_| \_\
 
-
-		The Caesar cipher is a substitution cipher where each letter in the plaintext is shifted a certain number of places down or up the alphabet.
-		For example, with a shift of 3, A becomes D, B becomes E, and so on. To decrypt, you simply shift in the opposite direction.)";
+		The Caesar cipher is a substitution cipher where each letter in the plaintext is shifted a certain number of places
+		down or up the alphabet.
+		For example, with a shift of 3, A becomes D, B becomes E, and so on. To decrypt, you simply shift in the
+		opposite direction.)";
 		}
 		else if (ciphers_help == 2) {
 			system("cls");
 			cout << R"(
 
 
-			    _      _____   ____      _      ____    _   _          ____    ___   ____    _   _   _____   ____  
-			   / \    |_   _| | __ )    / \    / ___|  | | | |        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
-			  / _ \     | |   |  _ \   / _ \   \___ \  | |_| |       | |       | |  | |_) | | |_| | |  _|   | |_) |
-			 / ___ \    | |   | |_) | / ___ \   ___) | |  _  |       | |___    | |  |  __/  |  _  | | |___  |  _ < 
-			/_/   \_\   |_|   |____/ /_/   \_\ |____/  |_| |_|        \____|  |___| |_|     |_| |_| |_____| |_| \_\
+				    _      _____    ____       _      ____     _   _ 
+				   / \    |_   _|  | __ )     / \    / ___|   | | | |
+				  / _ \     | |    |  _ \    / _ \   \___ \   | |_| |
+				 / ___ \    | |    | |_) |  / ___ \   ___) |  |  _  |
+				/_/   \_\   |_|    |____/  /_/   \_\ |____/   |_| |_|
 
+				  ____     ___     ____     _   _    _____    ____  
+				 / ___|   |_ _|   |  _ \   | | | |  | ____|  |  _ \ 
+				| |        | |    | |_) |  | |_| |  |  _|    | |_) |
+				| |___     | |    |  __/   |  _  |  | |___   |  _ < 
+				 \____|   |___|   |_|      |_| |_|  |_____|  |_| \_\
 
-		The Atbash cipher is a simple substitution cipher that replaces each letter with its corresponding letter from the reverse of the alphabet.
-		For example, A becomes Z, B becomes Y, C becomes X, and so on. To decrypt, you apply the same substitution in reverse.)";
+		The Atbash cipher is a simple substitution cipher that replaces each letter with its corresponding letter
+		from the reverse of the alphabet.
+		For example, A becomes Z, B becomes Y, C becomes X, and so on. To decrypt, you apply the same substitution
+		in reverse.)";
 		}
 		else if (ciphers_help == 3) {
 			system("cls");
 			cout << R"(
 
 
-			 ____    ___   _   _    ____   _       _____         ____   _   _      _      ____       _       ____   _____   _____   ____  
-			/ ___|  |_ _| | \ | |  / ___| | |     | ____|       / ___| | | | |    / \    |  _ \     / \     / ___| |_   _| | ____| |  _ \ 
-			\___ \   | |  |  \| | | |  _  | |     |  _|   _____| |     | |_| |   / _ \   | |_) |   / _ \   | |       | |   |  _|   | |_) |
-			 ___) |  | |  | |\  | | |_| | | |___  | |___ |_____| |___  |  _  |  / ___ \  |  _ <   / ___ \  | |___    | |   | |___  |  _ < 
-			|____/  |___| |_| \_|  \____| |_____| |_____|       \____| |_| |_| /_/   \_\ |_| \_\ /_/   \_\  \____|   |_|   |_____| |_| \_\
+						 ____    ___   _   _    ____   _       _____  
+						/ ___|  |_ _| | \ | |  / ___| | |     | ____|  
+						\___ \   | |  |  \| | | |  _  | |     |  _|   
+						 ___) |  | |  | |\  | | |_| | | |___  | |___  
+						|____/  |___| |_| \_|  \____| |_____| |_____|
 
-						__  __   ___    ____          ____    ___   ____    _   _   _____   ____  
-						\ \/ /  / _ \  |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
-						 \  /  | | | | | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
-						 /  \  | |_| | |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
-						/_/\_\  \___/  |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
+				  ____    _   _      _      ____        _      ____   _____   _____   ____  
+				 / ___|  | | | |    / \    |  _ \      / \    / ___| |_   _| | ____| |  _ \ 
+				| |      | |_| |   / _ \   | |_) |    / _ \  | |       | |   |  _|   | |_) |
+				| |___   |  _  |  / ___ \  |  _ <    / ___ \ | |___    | |   | |___  |  _ < 
+				 \____|  |_| |_| /_/   \_\ |_| \_\  /_/   \_\ \____|   |_|   |_____| |_| \_\
+
+					__  __   ___    ____          ____    ___   ____    _   _   _____   ____  
+					\ \/ /  / _ \  |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
+					 \  /  | | | | | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
+					 /  \  | |_| | |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
+					/_/\_\  \___/  |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
 
 
-		The single-character XOR cipher is a symmetric encryption method where each byte of the plaintext is XORed with a single character key.
-		This means that the same key is used for both encryption and decryption. To decrypt, you simply XOR the ciphertext with the same key.)";
+		The single-character XOR cipher is a symmetric encryption method where each byte of the plaintext is
+		XORed with a single character key.
+		This means that the same key is used for both encryption and decryption. To decrypt, you simply
+		XOR the ciphertext with the same key.)";
 		}
 		else if (ciphers_help == 0) {
 			system("cls");
@@ -135,7 +157,8 @@ int how_to_play() {
 
 		==========================================================================
 		Welcome to PRISM-25! In this interactive experience, you will take on the role of a detective
-		investigating a series of mysterious events. Your goal is to uncover the truth behind the cases presented in each level.
+		investigating a series of mysterious events. Your goal is to uncover the truth behind the
+		cases presented in each level.
 		[ How to Play ]
 		1. Navigate through the investigation by choosing from the available options.
 		2. Examine evidence, interview witnesses, and solve puzzles to progress in the story.
@@ -182,9 +205,15 @@ int how_to_play() {
 
 int main() {
 
-	HWND hwnd = GetConsoleWindow();
+	keybd_event(VK_MENU, 0, 0, 0);        // Press Alt
+	keybd_event(VK_RETURN, 0, 0, 0);      // Press Enter
 
-	ShowWindow(hwnd, SW_MAXIMIZE);
+	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0); // Release Enter
+	keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);   // Release Alt
+
+	//HWND hwnd = GetConsoleWindow();
+
+	//ShowWindow(hwnd, SW_MAXIMIZE);
 
 
 	int main_menu_choice = 0;
