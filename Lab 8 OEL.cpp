@@ -12,38 +12,118 @@ void Level_2();
 void Level_3();
 void timer(string*, int&);
 int main_menu();
-
-int credits() {
-	system("cls");
-	cout << R"(
-
-			  ____    ____    _____   ____    ___   _____   ____  
-			 / ___|  |  _ \  | ____| |  _ \  |_ _| |_   _| / ___| 
-			| |      | |_) | |  _|   | | | |  | |    | |   \___ \ 
-			| |___   |  _ <  | |___  | |_| |  | |    | |    ___) |
-			 \____|  |_| \_\ |_____| |____/  |___|   |_|   |____/
-		============================================================
-
-		Hania Nauman
-		Rameen Arjmand
-		Shaheer
-
-		============================================================
-
-)";
-	system("pause");
-	return 0;
-}
-
+int ciphers_help();
+int lore();
+int credits();
 int how_to_play();
 int totalscore = 0, score_level1 = 0, score_level3=0;
 
-int how_to_play() {
-	int how_to_play_choice;
+int lore() {
+		system("cls");
+	cout << R"(
+				
+				 _         ____     _____     ______ 
+				| |       / __ \   |  __ \   |  ____|
+				| |      | |  | |  | |__) |  | |__   
+				| |      | |  | |  |  _  /   |  __|  
+				| |____  | |__| |  | | \ \   | |____ 
+				|______|  \____/   |_|  \_\  |______|
 
+		===========================================================================
+
+			The inspiration is fron the cdrama The Truth Within.
+		)";
+		system("pause");
+		return 0;
+}
+
+int ciphers_help(){
+	int  ciphers_help = 0;
 	system("cls");
 
-	cout << R"(
+	do {
+
+		cout << R"(
+
+                  ____ ___ ____  _   _ _____ ____  ____  
+                 / ___|_ _|  _ \| | | | ____|  _ \/ ___| 
+                | |    | || |_) | |_| |  _| | |_) \___ \ 
+                | |___ | ||  __/|  _  | |___|  _ < ___) |
+                 \____|___|_|   |_| |_|_____|_| \_\____/
+
+		The Ciplers used in the game are:
+			1. Caesar Cipher
+			2. Atbash (Reverse Alphabet)
+			3. Single-character XOR Cipher
+
+		Enter the number of the cipher to learn more about it, or enter 0 to return to the help menu: )";
+		cin >> ciphers_help;
+		if (ciphers_help == 1) {
+			system("cls");
+			cout << R"(
+			
+			  	  ____      _      _____   ____      _      ____          ____    ___   ____    _   _   _____   ____  
+				 / ___|    / \    | ____| / ___|    / \    |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
+				| |       / _ \   |  _|   \___ \   / _ \   | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
+				| |___   / ___ \  | |___   ___) | / ___ \  |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
+				 \____| /_/   \_\ |_____| |____/ /_/   \_\ |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
+
+
+		The Caesar cipher is a substitution cipher where each letter in the plaintext is shifted a certain number of places down or up the alphabet.
+		For example, with a shift of 3, A becomes D, B becomes E, and so on. To decrypt, you simply shift in the opposite direction.)";
+		}
+		else if (ciphers_help == 2) {
+			system("cls");
+			cout << R"(
+
+
+			    _      _____   ____      _      ____    _   _          ____    ___   ____    _   _   _____   ____  
+			   / \    |_   _| | __ )    / \    / ___|  | | | |        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
+			  / _ \     | |   |  _ \   / _ \   \___ \  | |_| |       | |       | |  | |_) | | |_| | |  _|   | |_) |
+			 / ___ \    | |   | |_) | / ___ \   ___) | |  _  |       | |___    | |  |  __/  |  _  | | |___  |  _ < 
+			/_/   \_\   |_|   |____/ /_/   \_\ |____/  |_| |_|        \____|  |___| |_|     |_| |_| |_____| |_| \_\
+
+
+		The Atbash cipher is a simple substitution cipher that replaces each letter with its corresponding letter from the reverse of the alphabet.
+		For example, A becomes Z, B becomes Y, C becomes X, and so on. To decrypt, you apply the same substitution in reverse.)";
+		}
+		else if (ciphers_help == 3) {
+			system("cls");
+			cout << R"(
+
+
+			 ____    ___   _   _    ____   _       _____         ____   _   _      _      ____       _       ____   _____   _____   ____  
+			/ ___|  |_ _| | \ | |  / ___| | |     | ____|       / ___| | | | |    / \    |  _ \     / \     / ___| |_   _| | ____| |  _ \ 
+			\___ \   | |  |  \| | | |  _  | |     |  _|   _____| |     | |_| |   / _ \   | |_) |   / _ \   | |       | |   |  _|   | |_) |
+			 ___) |  | |  | |\  | | |_| | | |___  | |___ |_____| |___  |  _  |  / ___ \  |  _ <   / ___ \  | |___    | |   | |___  |  _ < 
+			|____/  |___| |_| \_|  \____| |_____| |_____|       \____| |_| |_| /_/   \_\ |_| \_\ /_/   \_\  \____|   |_|   |_____| |_| \_\
+
+						__  __   ___    ____          ____    ___   ____    _   _   _____   ____  
+						\ \/ /  / _ \  |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
+						 \  /  | | | | | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
+						 /  \  | |_| | |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
+						/_/\_\  \___/  |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
+
+
+		The single-character XOR cipher is a symmetric encryption method where each byte of the plaintext is XORed with a single character key.
+		This means that the same key is used for both encryption and decryption. To decrypt, you simply XOR the ciphertext with the same key.)";
+		}
+		else if (ciphers_help == 0) {
+			system("cls");
+			return 0;
+		}
+		else {
+			cout << "Invalid choice. Please enter a number between 0 and 3.";
+		}
+	} while (ciphers_help != 0);
+}
+
+int how_to_play() {
+	int how_to_play_choice;
+	do {
+		system("cls");
+
+		cout << R"(
 
 		==========================================================================
 			 _   _   _____   _       ____        __  __   _____   _   _   _   _ 
@@ -68,81 +148,33 @@ int how_to_play() {
 		[ Objective ]
 		Solve all levels, uncover the truth, and achieve the highest score possible!
 		============================================================)";
+	
 
-	do {
 		cout << R"(
 
-                  ____ ___ ____  _   _ _____ ____  ____  
-                 / ___|_ _|  _ \| | | | ____|  _ \/ ___| 
-                | |    | || |_) | |_| |  _| | |_) \___ \ 
-                | |___ | ||  __/|  _  | |___|  _ < ___) |
-                 \____|___|_|   |_| |_|_____|_| \_\____/
-
-		The Ciplers used in the game are:
-			1. Caesar Cipher
-			2. Atbash (Reverse Alphabet)
-			3. Single-character XOR Cipher
-
-		Enter the number of the cipher to learn more about it, or enter 0 to return to the main menu: )";
+		What would you like to do now?
+			1. Go to Ciphers Guide
+			2. Read the Lore
+			3. Return to Main Menu
+	
+		Your choice: )";
 		cin >> how_to_play_choice;
-		if (how_to_play_choice == 1) {
-			system("cls");
-			cout << R"(
-			
-			  	  ____      _      _____   ____      _      ____          ____    ___   ____    _   _   _____   ____  
-				 / ___|    / \    | ____| / ___|    / \    |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
-				| |       / _ \   |  _|   \___ \   / _ \   | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
-				| |___   / ___ \  | |___   ___) | / ___ \  |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
-				 \____| /_/   \_\ |_____| |____/ /_/   \_\ |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
 
-
-		The Caesar cipher is a substitution cipher where each letter in the plaintext is shifted a certain number of places down or up the alphabet.
-		For example, with a shift of 3, A becomes D, B becomes E, and so on. To decrypt, you simply shift in the opposite direction.)";
-		}
-		else if (how_to_play_choice == 2) {
-			system("cls");
-			cout << R"(
-
-
-			    _      _____   ____      _      ____    _   _          ____    ___   ____    _   _   _____   ____  
-			   / \    |_   _| | __ )    / \    / ___|  | | | |        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
-			  / _ \     | |   |  _ \   / _ \   \___ \  | |_| |       | |       | |  | |_) | | |_| | |  _|   | |_) |
-			 / ___ \    | |   | |_) | / ___ \   ___) | |  _  |       | |___    | |  |  __/  |  _  | | |___  |  _ < 
-			/_/   \_\   |_|   |____/ /_/   \_\ |____/  |_| |_|        \____|  |___| |_|     |_| |_| |_____| |_| \_\
-
-
-		The Atbash cipher is a simple substitution cipher that replaces each letter with its corresponding letter from the reverse of the alphabet.
-		For example, A becomes Z, B becomes Y, C becomes X, and so on. To decrypt, you apply the same substitution in reverse.)";
-		}
-		else if (how_to_play_choice == 3) {
-			system("cls");
-			cout << R"(
-
-
-			 ____    ___   _   _    ____   _       _____         ____   _   _      _      ____       _       ____   _____   _____   ____  
-			/ ___|  |_ _| | \ | |  / ___| | |     | ____|       / ___| | | | |    / \    |  _ \     / \     / ___| |_   _| | ____| |  _ \ 
-			\___ \   | |  |  \| | | |  _  | |     |  _|   _____| |     | |_| |   / _ \   | |_) |   / _ \   | |       | |   |  _|   | |_) |
-			 ___) |  | |  | |\  | | |_| | | |___  | |___ |_____| |___  |  _  |  / ___ \  |  _ <   / ___ \  | |___    | |   | |___  |  _ < 
-			|____/  |___| |_| \_|  \____| |_____| |_____|       \____| |_| |_| /_/   \_\ |_| \_\ /_/   \_\  \____|   |_|   |_____| |_| \_\
-
-						__  __   ___    ____          ____    ___   ____    _   _   _____   ____  
-						\ \/ /  / _ \  |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
-						 \  /  | | | | | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
-						 /  \  | |_| | |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
-						/_/\_\  \___/  |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
-
-
-		The single-character XOR cipher is a symmetric encryption method where each byte of the plaintext is XORed with a single character key.
-		This means that the same key is used for both encryption and decryption. To decrypt, you simply XOR the ciphertext with the same key.)";
-		}
-		else if (how_to_play_choice == 0) {
-			system("cls");
+		if (how_to_play_choice == 3) {
 			return 0;
 		}
-		else {
-			cout << "Invalid choice. Please enter a number between 0 and 3.";
+		else if (how_to_play_choice == 1) {
+			ciphers_help();
 		}
-	} while (how_to_play_choice != 0);
+		else if (how_to_play_choice == 2) {
+			lore();
+		}
+	}while (how_to_play_choice != 3);
+	
+
+
+
+	
 
 	return 0;
 }
@@ -644,3 +676,24 @@ void timer(string* timed_answer, int& time) {
 }
 
 
+int credits() {
+	system("cls");
+	cout << R"(
+
+			  ____    ____    _____   ____    ___   _____   ____  
+			 / ___|  |  _ \  | ____| |  _ \  |_ _| |_   _| / ___| 
+			| |      | |_) | |  _|   | | | |  | |    | |   \___ \ 
+			| |___   |  _ <  | |___  | |_| |  | |    | |    ___) |
+			 \____|  |_| \_\ |_____| |____/  |___|   |_|   |____/
+		============================================================
+
+		Hania Nauman
+		Rameen Arjmand
+		Shaheer
+
+		============================================================
+
+)";
+	system("pause");
+	return 0;
+}
