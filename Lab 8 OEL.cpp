@@ -222,7 +222,13 @@ int main() {
 	
 
 int welcome() {
+<<<<<<< Updated upstream
 	system("cls");
+=======
+
+
+
+>>>>>>> Stashed changes
 	cout << "  _____   _____   _____   _____  __  __          ___   _____ " << endl;
 	cout << " |  __ \\ |  __ \\ |_   _| / ____||  \\/  |        |__ \\ | ____|"<< endl;
 	cout << " | |__) || |__) |  | |  | (___  | \\  / |  ______   ) || |__  "<< endl;
