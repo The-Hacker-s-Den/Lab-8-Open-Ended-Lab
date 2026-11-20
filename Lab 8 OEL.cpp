@@ -14,6 +14,7 @@ void timer(string*, int&);
 int main_menu();
 
 int credits() {
+	system("cls");
 	cout << R"(
 
 			  ____    ____    _____   ____    ___   _____   ____  
@@ -28,7 +29,9 @@ int credits() {
 		Shaheer
 
 		============================================================
-	)";
+
+)";
+	system("pause");
 	return 0;
 }
 
@@ -187,6 +190,7 @@ int main() {
 	
 
 int welcome() {
+	system("cls");
 	cout << "  _____   _____   _____   _____  __  __          ___   _____ " << endl;
 	cout << " |  __ \\ |  __ \\ |_   _| / ____||  \\/  |        |__ \\ | ____|"<< endl;
 	cout << " | |__) || |__) |  | |  | (___  | \\  / |  ______   ) || |__  "<< endl;
@@ -219,6 +223,7 @@ void Level_1() {
 
 	char hint;
 	bool phoneFound = false, phoneUnlocked=false;
+	system("cls");
 	cout << R"(
 
 		  ____    _    ____  _____   _____ ___ _     _____
