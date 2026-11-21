@@ -15,22 +15,12 @@ void timer(string*, int&);
 int main_menu();
 int totalscore = 0, score_level1 = 0, score_level2 = 0, score_level3 = 0, score_level4 = 0;
 
-int main() {
-	string clues[4] = { "", "", "", "" };
-	welcome();
-	int main_menu_choice = main_menu();
-	if (main_menu_choice == 1)
-	{
-		Level_1();
-		Level_2(clues);
-		Level_3();
-		Level_4(clues);
-	}
+
 int ciphers_help();
 int lore();
 int credits();
 int how_to_play();
-int totalscore = 0, score_level1 = 0, score_level3=0;
+
 
 int lore() {
 		system("cls");
@@ -219,16 +209,22 @@ int how_to_play() {
 
 int main() {
 
+
+	HWND hwnd = GetConsoleWindow();
+
+	ShowWindow(hwnd, SW_MAXIMIZE);
+
+
 	keybd_event(VK_MENU, 0, 0, 0);        // Press Alt
 	keybd_event(VK_RETURN, 0, 0, 0);      // Press Enter
 
 	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0); // Release Enter
 	keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);   // Release Alt
 
-	//HWND hwnd = GetConsoleWindow();
 
-	//ShowWindow(hwnd, SW_MAXIMIZE);
 
+
+	string clues[4] = { "", "", "", "" };
 
 	int main_menu_choice = 0;
 	
@@ -238,8 +234,10 @@ int main() {
 			main_menu_choice = main_menu();
 			if (main_menu_choice == 1)
 			{
-				Level_1();
-				Level_3();
+				//Level_1();
+				Level_2(clues);
+				//Level_3();
+				//Level_4(clues);
 			}
 			else if (main_menu_choice == 2)
 			{
@@ -336,7 +334,7 @@ void Level_1() {
 		[CRIME SCENE]
 
 		You slowly push open the bedroom door. 
-    The room is unusually silent.
+		The room is unusually silent.
 
 		A dim lamp flickers beside the bed.
 		Thick spider webs cover the corners of the room.
@@ -465,7 +463,7 @@ ______________________________________________________________________________
 
 
 void Level_2(string clues[]) {
-	int choice = 0, choice2 = 0, hintsUsed = 0, incorrect = 0;
+	int choice = 0, choice2 = 0, hintsUsed = 0, incorrect = 0, time2 = 0;
 
 	string answer2;
 	char hint;
@@ -578,12 +576,47 @@ void Level_2(string clues[]) {
 			else {
 				cout << "\n________________________________________________\n";
 				cout << "\n[ NOTEBOOK ENTRY ]\n";
-				cout << "Encrypted Message: XSVNRHGZORZHEVHKVIXLWV8492";
+				string cipher2 = "XSVNRHG ZORZH EVHKVI XLWV 8492";
+				cout << "Encrypted Message: " << cipher2;
 				cout << "\nCipher Type: Atbash (Reverse Alphabet)";
 				cout << "\n________________________________________________\n";
 				cout << "\nEnter the decrypted message without spaces in UPPER/LOWERCASE: ";
-				cin >> answer2;
-				if (answer2 == "CHEMISTALIASVESPERCODE8492" || answer2 == "chemistaliasvespercode8492") {
+				timer(&answer2, time2);
+
+				int size_cipher2 = cipher2.length();
+
+				int size_answer2 = answer2.length();
+
+				for (int i = 0; i < size_answer2; i++) {
+					answer2[i] = toupper(answer2[i]);
+				}
+
+
+				for (int i = 0; i < size_answer2; i++) {
+					if ((answer2[i] != ' ') && (answer2[i] >= 'A' && answer2[i] <= 'Z')) {
+						answer2[i] = 'Z' - (answer2[i] - 'A');
+					}
+				}
+
+				int answer_accuracy = 0;
+
+				bool answer_true = false;
+
+				if (size_answer2 == size_cipher2) {
+					for (int i = 0; i < size_answer2; i++) {
+						if (answer2[i] == cipher2[i]) {
+							answer_accuracy++;
+						}
+					}
+					if (answer_accuracy == size_answer2) {
+						answer_true = true;
+					}
+
+				}
+
+
+				//if (answer2 == "CHEMISTALIASVESPERCODE8492" || answer2 == "chemistaliasvespercode8492")
+				if (answer_true){
 					cout << "\nNotebook deciphered!";
 					notebookDeciphered = true;
 					cout << R"(
@@ -890,7 +923,7 @@ void Level_4(string clues[]) {
 					# 0 0 4
 
 				     T H E   F I N A L E
-       T H E   C H E M I S T ' S   F O R M U L A 
+                 T H E   C H E M I S T ' S   F O R M U L A 
 )";
 	cout << R"(		
 		============================================================
@@ -898,12 +931,12 @@ void Level_4(string clues[]) {
 		STATUS       : RAID ST JUDE PSYCHIATRIC CLINIC
 		LOCATION : ST JUDE PSYCHIATRIC CLINIC 
 		CAUSE : FIND SOLID EVIDENCE TO ROOT OUT PRISM-25
-              AND ARREST THE CHEMIST AND ALL RELEVANT PEOPLE
+		AND ARREST THE CHEMIST AND ALL RELEVANT PEOPLE
 
 		============================================================
 
 		"Every grief demands a price.
-             Every formula hides a sin."
+			Every formula hides a sin."
 
 		------------------------------------------------------------
 		Press Enter to raid the clinic...
@@ -1061,6 +1094,7 @@ behind PRISM-25 boarded the international plane 20 min before the raid.
 ______________________________________________________________________________________
  )";
 					computerDeciphered = true;
+					system("pause");
 				}
 				else {
 					cout << "\n Incorrect password. Try Again!";
