@@ -15,22 +15,32 @@ void timer(string*, int&);
 int main_menu();
 int totalscore = 0, score_level1 = 0, score_level2 = 0, score_level3 = 0, score_level4 = 0;
 
-int main() {
-	string clues[4] = { "", "", "", "" };
-	welcome();
-	int main_menu_choice = main_menu();
-	if (main_menu_choice == 1)
-	{
-		Level_1();
-		Level_2(clues);
-		Level_3();
-		Level_4(clues);
-	}
+
 int ciphers_help();
 int lore();
 int credits();
 int how_to_play();
-int totalscore = 0, score_level1 = 0, score_level3=0;
+int fullscreen();
+
+
+
+int fullscreen(){
+
+
+	HWND hwnd = GetConsoleWindow();// Get the handle to the console window
+
+	ShowWindow(hwnd, SW_MAXIMIZE); // Maximize the console window
+
+
+	keybd_event(VK_MENU, 0, 0, 0);        // Press Alt
+	keybd_event(VK_RETURN, 0, 0, 0);      // Press Enter
+
+	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0); // Release Enter
+	keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);   // Release Alt
+
+	return 0;
+
+}
 
 int lore() {
 		system("cls");
@@ -219,16 +229,10 @@ int how_to_play() {
 
 int main() {
 
-	keybd_event(VK_MENU, 0, 0, 0);        // Press Alt
-	keybd_event(VK_RETURN, 0, 0, 0);      // Press Enter
+	fullscreen();
+	
 
-	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0); // Release Enter
-	keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);   // Release Alt
-
-	//HWND hwnd = GetConsoleWindow();
-
-	//ShowWindow(hwnd, SW_MAXIMIZE);
-
+	string clues[4] = { "", "", "", "" };
 
 	int main_menu_choice = 0;
 	
@@ -239,7 +243,9 @@ int main() {
 			if (main_menu_choice == 1)
 			{
 				Level_1();
+				Level_2(clues);
 				Level_3();
+				Level_4(clues);
 			}
 			else if (main_menu_choice == 2)
 			{
@@ -336,7 +342,7 @@ void Level_1() {
 		[CRIME SCENE]
 
 		You slowly push open the bedroom door. 
-    The room is unusually silent.
+		The room is unusually silent.
 
 		A dim lamp flickers beside the bed.
 		Thick spider webs cover the corners of the room.
@@ -465,11 +471,15 @@ ______________________________________________________________________________
 
 
 void Level_2(string clues[]) {
-	int choice = 0, choice2 = 0, hintsUsed = 0, incorrect = 0;
+	int choice = 0, choice2 = 0, hintsUsed = 0, incorrect = 0, time2 = 0;
 
 	string answer2;
 	char hint;
 	bool notebookFound = false, notebookDeciphered = false;
+
+	system("cls");
+
+
 	cout << R"(
 
 		  ____    _    ____  _____   _____ ___ _     _____
@@ -578,12 +588,50 @@ void Level_2(string clues[]) {
 			else {
 				cout << "\n________________________________________________\n";
 				cout << "\n[ NOTEBOOK ENTRY ]\n";
-				cout << "Encrypted Message: XSVNRHGZORZHEVHKVIXLWV8492";
+				string cipher2 = "XSVNRHG ZORZH EVHKVI XLWV 8492";
+
+				//answer = "CHEMIST ALIAS VESPER CODE 8492"
+
+				cout << "Encrypted Message: " << cipher2;
 				cout << "\nCipher Type: Atbash (Reverse Alphabet)";
 				cout << "\n________________________________________________\n";
 				cout << "\nEnter the decrypted message without spaces in UPPER/LOWERCASE: ";
-				cin >> answer2;
-				if (answer2 == "CHEMISTALIASVESPERCODE8492" || answer2 == "chemistaliasvespercode8492") {
+				timer(&answer2, time2);
+
+				int size_cipher2 = cipher2.length();
+
+				int size_answer2 = answer2.length();
+
+				for (int i = 0; i < size_answer2; i++) {
+					answer2[i] = toupper(answer2[i]);
+				}
+
+
+				for (int i = 0; i < size_answer2; i++) {
+					if ((answer2[i] != ' ') && (answer2[i] >= 'A' && answer2[i] <= 'Z')) {
+						answer2[i] = 'Z' - (answer2[i] - 'A');
+					}
+				}
+
+				int answer_accuracy = 0;
+
+				bool answer_true = false;
+
+				if (size_answer2 == size_cipher2) {
+					for (int i = 0; i < size_answer2; i++) {
+						if (answer2[i] == cipher2[i]) {
+							answer_accuracy++;
+						}
+					}
+					if (answer_accuracy == size_answer2) {
+						answer_true = true;
+					}
+
+				}
+
+
+				//if (answer2 == "CHEMISTALIASVESPERCODE8492" || answer2 == "chemistaliasvespercode8492")
+				if (answer_true){
 					cout << "\nNotebook deciphered!";
 					notebookDeciphered = true;
 					cout << R"(
@@ -879,6 +927,9 @@ void Level_4(string clues[]) {
 	int time4 = 0;
 	char checkNotebook, storeClues, hint;
 	bool computerLocked = true, computerDeciphered = false;
+
+	system("cls");
+
 	cout << R"(
 
 		  ____    _    ____  _____   _____ ___ _     _____
@@ -890,7 +941,7 @@ void Level_4(string clues[]) {
 					# 0 0 4
 
 				     T H E   F I N A L E
-       T H E   C H E M I S T ' S   F O R M U L A 
+                 T H E   C H E M I S T ' S   F O R M U L A 
 )";
 	cout << R"(		
 		============================================================
@@ -898,12 +949,12 @@ void Level_4(string clues[]) {
 		STATUS       : RAID ST JUDE PSYCHIATRIC CLINIC
 		LOCATION : ST JUDE PSYCHIATRIC CLINIC 
 		CAUSE : FIND SOLID EVIDENCE TO ROOT OUT PRISM-25
-              AND ARREST THE CHEMIST AND ALL RELEVANT PEOPLE
+		AND ARREST THE CHEMIST AND ALL RELEVANT PEOPLE
 
 		============================================================
 
 		"Every grief demands a price.
-             Every formula hides a sin."
+			Every formula hides a sin."
 
 		------------------------------------------------------------
 		Press Enter to raid the clinic...
@@ -996,7 +1047,7 @@ void Level_4(string clues[]) {
 								cout << "\n[NOTEBOOK VERIFIED] Stored Override Code: " << clues[1] << "\n";
 							}
 							else {
-								cout << "\n[ACCESS DENIED] Your notebook is empty—you never saved the code in Level 2.\n";
+								cout << "\n[ACCESS DENIED] Your notebook is empty. You never saved the code in Level 2.\n";
 							}
 						}
 							else if (checkNotebook == 'n' || checkNotebook == 'N') {
@@ -1023,10 +1074,15 @@ you find encrypted evidence files.
 				cout << "\n_____________________________________\n";
 				cout << "\n[ ENCRYPTED EVIDENCE FILE ]\n";
 				string cypher4 = "QEFRI WPRVTH KCI LGMRGW LD WVZ LWG EXVMF X QLNX XAIV";
-				string solution4 = "VANCE FUNDED THE TRIALS TO SEE HER AGAIN I MUST FLEE";
+				//string solution4 = "VANCE FUNDED THE TRIALS TO SEE HER AGAIN I MUST FLEE";
+
+				string key = "VESPER";
+
+				int key_length = key.length();
 
 				cout << "Encrypted Message: " << cypher4;
 				cout << "\nVigenere Cipher (Key: Chemist's Alias)";
+
 				cout << "\n_____________________________________\n";
 				cout << "\nEnter the decrypted message with spaces: ";
 
@@ -1039,7 +1095,48 @@ you find encrypted evidence files.
 					answer4[i] = toupper(answer4[i]);
 				}
 
-				if (answer4 == solution4) {
+				int cipher4_length = cypher4.length();
+
+				int answer4_length = answer4.length();
+
+				int answer4_accuracy = 0;
+
+				bool answer4_true = false;
+
+				int key_index = 0;
+
+				if (answer4_length == cipher4_length) {
+					for (int i = 0; i < answer4_length; i++) {
+
+						if (answer4[i] == ' ') {
+							continue;
+						}
+
+						if (answer4[i] != ' ' && (answer4[i] >= 'A' && answer4[i] <= 'Z')) {
+							answer4[i] = char((answer4[i] - 'A' + 26 + (key[key_index] - 'A')) % 26 + 'A');
+						}
+						key_index = (key_index + 1) % key_length;
+
+						while (answer4[i] < 'A') {
+							answer4[i] += 26;
+						}
+
+						while (answer4[i] > 'Z') {
+							answer4[i] -= 26;
+						}
+					}
+				}
+
+				for (int i = 0; i < answer4_length; i++) {
+					if (answer4[i] == cypher4[i]) {
+						answer4_accuracy++;
+					}
+				}
+				if (answer4_accuracy == cipher4_length) {
+					answer4_true = true;
+				}
+
+				if (answer4_true) {
 					cout << "\n[FILES DECRYPTED] Evidence secured! Dr. Vance placed under arrest.\n";
 					cout << R"(
 ______________________________________________________________________________________
@@ -1061,6 +1158,7 @@ behind PRISM-25 boarded the international plane 20 min before the raid.
 ______________________________________________________________________________________
  )";
 					computerDeciphered = true;
+					system("pause");
 				}
 				else {
 					cout << "\n Incorrect password. Try Again!";
