@@ -20,7 +20,27 @@ int ciphers_help();
 int lore();
 int credits();
 int how_to_play();
+int fullscreen();
 
+
+
+int fullscreen(){
+
+
+	HWND hwnd = GetConsoleWindow();// Get the handle to the console window
+
+	ShowWindow(hwnd, SW_MAXIMIZE); // Maximize the console window
+
+
+	keybd_event(VK_MENU, 0, 0, 0);        // Press Alt
+	keybd_event(VK_RETURN, 0, 0, 0);      // Press Enter
+
+	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0); // Release Enter
+	keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);   // Release Alt
+
+	return 0;
+
+}
 
 int lore() {
 		system("cls");
@@ -209,20 +229,8 @@ int how_to_play() {
 
 int main() {
 
-
-	HWND hwnd = GetConsoleWindow();
-
-	ShowWindow(hwnd, SW_MAXIMIZE);
-
-
-	keybd_event(VK_MENU, 0, 0, 0);        // Press Alt
-	keybd_event(VK_RETURN, 0, 0, 0);      // Press Enter
-
-	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0); // Release Enter
-	keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);   // Release Alt
-
-
-
+	fullscreen();
+	
 
 	string clues[4] = { "", "", "", "" };
 
@@ -234,10 +242,10 @@ int main() {
 			main_menu_choice = main_menu();
 			if (main_menu_choice == 1)
 			{
-				//Level_1();
+				Level_1();
 				Level_2(clues);
-				//Level_3();
-				//Level_4(clues);
+				Level_3();
+				Level_4(clues);
 			}
 			else if (main_menu_choice == 2)
 			{
@@ -468,6 +476,10 @@ void Level_2(string clues[]) {
 	string answer2;
 	char hint;
 	bool notebookFound = false, notebookDeciphered = false;
+
+	system("cls");
+
+
 	cout << R"(
 
 		  ____    _    ____  _____   _____ ___ _     _____
@@ -577,6 +589,9 @@ void Level_2(string clues[]) {
 				cout << "\n________________________________________________\n";
 				cout << "\n[ NOTEBOOK ENTRY ]\n";
 				string cipher2 = "XSVNRHG ZORZH EVHKVI XLWV 8492";
+
+				//answer = "CHEMIST ALIAS VESPER CODE 8492"
+
 				cout << "Encrypted Message: " << cipher2;
 				cout << "\nCipher Type: Atbash (Reverse Alphabet)";
 				cout << "\n________________________________________________\n";
@@ -912,6 +927,9 @@ void Level_4(string clues[]) {
 	int time4 = 0;
 	char checkNotebook, storeClues, hint;
 	bool computerLocked = true, computerDeciphered = false;
+
+	system("cls");
+
 	cout << R"(
 
 		  ____    _    ____  _____   _____ ___ _     _____
@@ -1029,7 +1047,7 @@ void Level_4(string clues[]) {
 								cout << "\n[NOTEBOOK VERIFIED] Stored Override Code: " << clues[1] << "\n";
 							}
 							else {
-								cout << "\n[ACCESS DENIED] Your notebook is empty—you never saved the code in Level 2.\n";
+								cout << "\n[ACCESS DENIED] Your notebook is empty. You never saved the code in Level 2.\n";
 							}
 						}
 							else if (checkNotebook == 'n' || checkNotebook == 'N') {
@@ -1056,10 +1074,15 @@ you find encrypted evidence files.
 				cout << "\n_____________________________________\n";
 				cout << "\n[ ENCRYPTED EVIDENCE FILE ]\n";
 				string cypher4 = "QEFRI WPRVTH KCI LGMRGW LD WVZ LWG EXVMF X QLNX XAIV";
-				string solution4 = "VANCE FUNDED THE TRIALS TO SEE HER AGAIN I MUST FLEE";
+				//string solution4 = "VANCE FUNDED THE TRIALS TO SEE HER AGAIN I MUST FLEE";
+
+				string key = "VESPER";
+
+				int key_length = key.length();
 
 				cout << "Encrypted Message: " << cypher4;
 				cout << "\nVigenere Cipher (Key: Chemist's Alias)";
+
 				cout << "\n_____________________________________\n";
 				cout << "\nEnter the decrypted message with spaces: ";
 
@@ -1072,7 +1095,48 @@ you find encrypted evidence files.
 					answer4[i] = toupper(answer4[i]);
 				}
 
-				if (answer4 == solution4) {
+				int cipher4_length = cypher4.length();
+
+				int answer4_length = answer4.length();
+
+				int answer4_accuracy = 0;
+
+				bool answer4_true = false;
+
+				int key_index = 0;
+
+				if (answer4_length == cipher4_length) {
+					for (int i = 0; i < answer4_length; i++) {
+
+						if (answer4[i] == ' ') {
+							continue;
+						}
+
+						if (answer4[i] != ' ' && (answer4[i] >= 'A' && answer4[i] <= 'Z')) {
+							answer4[i] = char((answer4[i] - 'A' + 26 + (key[key_index] - 'A')) % 26 + 'A');
+						}
+						key_index = (key_index + 1) % key_length;
+
+						while (answer4[i] < 'A') {
+							answer4[i] += 26;
+						}
+
+						while (answer4[i] > 'Z') {
+							answer4[i] -= 26;
+						}
+					}
+				}
+
+				for (int i = 0; i < answer4_length; i++) {
+					if (answer4[i] == cypher4[i]) {
+						answer4_accuracy++;
+					}
+				}
+				if (answer4_accuracy == cipher4_length) {
+					answer4_true = true;
+				}
+
+				if (answer4_true) {
 					cout << "\n[FILES DECRYPTED] Evidence secured! Dr. Vance placed under arrest.\n";
 					cout << R"(
 ______________________________________________________________________________________
