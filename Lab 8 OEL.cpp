@@ -3,6 +3,8 @@
 #include<chrono>
 #include<algorithm>
 #include<cctype>
+#include <windows.h>
+
 using namespace std;
 int welcome();
 void Level_1();
@@ -24,11 +26,246 @@ int main() {
 		Level_3();
 		Level_4(clues);
 	}
+int ciphers_help();
+int lore();
+int credits();
+int how_to_play();
+int totalscore = 0, score_level1 = 0, score_level3=0;
+
+int lore() {
+		system("cls");
+	cout << R"(
+				
+				 _         ____     _____     ______ 
+				| |       / __ \   |  __ \   |  ____|
+				| |      | |  | |  | |__) |  | |__   
+				| |      | |  | |  |  _  /   |  __|  
+				| |____  | |__| |  | | \ \   | |____ 
+				|______|  \____/   |_|  \_\  |______|
+
+		===========================================================================
+
+			The inspiration is fron the cdrama The Truth Within.
+		)";
+		system("pause");
+		return 0;
+}
+
+int ciphers_help(){
+	int  ciphers_help = 0;
+	system("cls");
+
+	do {
+
+		cout << R"(
+
+                  ____ ___ ____  _   _ _____ ____  ____  
+                 / ___|_ _|  _ \| | | | ____|  _ \/ ___| 
+                | |    | || |_) | |_| |  _| | |_) \___ \ 
+                | |___ | ||  __/|  _  | |___|  _ < ___) |
+                 \____|___|_|   |_| |_|_____|_| \_\____/
+
+		The Ciplers used in the game are:
+			1. Caesar Cipher
+			2. Atbash (Reverse Alphabet)
+			3. Single-character XOR Cipher
+
+		Enter the number of the cipher to learn more about it, or enter 0 to return to the help menu: )";
+		cin >> ciphers_help;
+		if (ciphers_help == 1) {
+			system("cls");
+			cout << R"(
+			
+					  ____      _      _____   ____      _      ____  
+					 / ___|    / \    | ____| / ___|    / \    |  _ \ 
+					| |       / _ \   |  _|   \___ \   / _ \   | |_) |
+					| |___   / ___ \  | |___   ___) | / ___ \  |  _ < 
+					 \____| /_/   \_\ |_____| |____/ /_/   \_\ |_| \_\
+                                                  
+					  ____   ___   ____    _   _   _____   ____  
+					 / ___| |_ _| |  _ \  | | | | | ____| |  _ \ 
+					| |      | |  | |_) | | |_| | |  _|   | |_) |
+					| |___   | |  |  __/  |  _  | | |___  |  _ < 
+					 \____| |___| |_|     |_| |_| |_____| |_| \_\
+
+		The Caesar cipher is a substitution cipher where each letter in the plaintext is shifted a certain number of places
+		down or up the alphabet.
+		For example, with a shift of 3, A becomes D, B becomes E, and so on. To decrypt, you simply shift in the
+		opposite direction.)";
+		}
+		else if (ciphers_help == 2) {
+			system("cls");
+			cout << R"(
+
+
+				    _      _____    ____       _      ____     _   _ 
+				   / \    |_   _|  | __ )     / \    / ___|   | | | |
+				  / _ \     | |    |  _ \    / _ \   \___ \   | |_| |
+				 / ___ \    | |    | |_) |  / ___ \   ___) |  |  _  |
+				/_/   \_\   |_|    |____/  /_/   \_\ |____/   |_| |_|
+
+				  ____     ___     ____     _   _    _____    ____  
+				 / ___|   |_ _|   |  _ \   | | | |  | ____|  |  _ \ 
+				| |        | |    | |_) |  | |_| |  |  _|    | |_) |
+				| |___     | |    |  __/   |  _  |  | |___   |  _ < 
+				 \____|   |___|   |_|      |_| |_|  |_____|  |_| \_\
+
+		The Atbash cipher is a simple substitution cipher that replaces each letter with its corresponding letter
+		from the reverse of the alphabet.
+		For example, A becomes Z, B becomes Y, C becomes X, and so on. To decrypt, you apply the same substitution
+		in reverse.)";
+		}
+		else if (ciphers_help == 3) {
+			system("cls");
+			cout << R"(
+
+
+						 ____    ___   _   _    ____   _       _____  
+						/ ___|  |_ _| | \ | |  / ___| | |     | ____|  
+						\___ \   | |  |  \| | | |  _  | |     |  _|   
+						 ___) |  | |  | |\  | | |_| | | |___  | |___  
+						|____/  |___| |_| \_|  \____| |_____| |_____|
+
+				  ____    _   _      _      ____        _      ____   _____   _____   ____  
+				 / ___|  | | | |    / \    |  _ \      / \    / ___| |_   _| | ____| |  _ \ 
+				| |      | |_| |   / _ \   | |_) |    / _ \  | |       | |   |  _|   | |_) |
+				| |___   |  _  |  / ___ \  |  _ <    / ___ \ | |___    | |   | |___  |  _ < 
+				 \____|  |_| |_| /_/   \_\ |_| \_\  /_/   \_\ \____|   |_|   |_____| |_| \_\
+
+					__  __   ___    ____          ____    ___   ____    _   _   _____   ____  
+					\ \/ /  / _ \  |  _ \        / ___|  |_ _| |  _ \  | | | | | ____| |  _ \ 
+					 \  /  | | | | | |_) |      | |       | |  | |_) | | |_| | |  _|   | |_) |
+					 /  \  | |_| | |  _ <       | |___    | |  |  __/  |  _  | | |___  |  _ < 
+					/_/\_\  \___/  |_| \_\       \____|  |___| |_|     |_| |_| |_____| |_| \_\
+
+
+		The single-character XOR cipher is a symmetric encryption method where each byte of the plaintext is
+		XORed with a single character key.
+		This means that the same key is used for both encryption and decryption. To decrypt, you simply
+		XOR the ciphertext with the same key.)";
+		}
+		else if (ciphers_help == 0) {
+			system("cls");
+			return 0;
+		}
+		else {
+			cout << "Invalid choice. Please enter a number between 0 and 3.";
+		}
+	} while (ciphers_help != 0);
+}
+
+int how_to_play() {
+	int how_to_play_choice;
+	do {
+		system("cls");
+
+		cout << R"(
+
+		==========================================================================
+			 _   _   _____   _       ____        __  __   _____   _   _   _   _ 
+			| | | | | ____| | |     |  _ \      |  \/  | | ____| | \ | | | | | |
+			| |_| | |  _|   | |     | |_) |     | |\/| | |  _|   |  \| | | | | |
+			|  _  | | |___  | |___  |  __/      | |  | | | |___  | |\  | | |_| |
+			|_| |_| |_____| |_____| |_|         |_|  |_| |_____| |_| \_|  \___/
+
+
+		==========================================================================
+		Welcome to PRISM-25! In this interactive experience, you will take on the role of a detective
+		investigating a series of mysterious events. Your goal is to uncover the truth behind the
+		cases presented in each level.
+		[ How to Play ]
+		1. Navigate through the investigation by choosing from the available options.
+		2. Examine evidence, interview witnesses, and solve puzzles to progress in the story.
+		3. Pay attention to details and clues provided in the narrative.
+		4. Use your problem-solving skills to decrypt messages and unlock secrets.
+		5. Keep track of your score based on your performance in each level.
+		[ Controls ]
+		- Use the keyboard to input your choices and answers.
+		- Follow on-screen prompts for hints and guidance.
+		[ Objective ]
+		Solve all levels, uncover the truth, and achieve the highest score possible!
+		============================================================)";
+	
+
+		cout << R"(
+
+		What would you like to do now?
+			1. Go to Ciphers Guide
+			2. Read the Lore
+			3. Return to Main Menu
+	
+		Your choice: )";
+		cin >> how_to_play_choice;
+
+		if (how_to_play_choice == 3) {
+			return 0;
+		}
+		else if (how_to_play_choice == 1) {
+			ciphers_help();
+		}
+		else if (how_to_play_choice == 2) {
+			lore();
+		}
+	}while (how_to_play_choice != 3);
+	
+
+
+
+	
+
 	return 0;
 }
 
 
+int main() {
+
+	keybd_event(VK_MENU, 0, 0, 0);        // Press Alt
+	keybd_event(VK_RETURN, 0, 0, 0);      // Press Enter
+
+	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0); // Release Enter
+	keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);   // Release Alt
+
+	//HWND hwnd = GetConsoleWindow();
+
+	//ShowWindow(hwnd, SW_MAXIMIZE);
+
+
+	int main_menu_choice = 0;
+	
+		while (main_menu_choice != 4) {
+			welcome();
+
+			main_menu_choice = main_menu();
+			if (main_menu_choice == 1)
+			{
+				Level_1();
+				Level_3();
+			}
+			else if (main_menu_choice == 2)
+			{
+				how_to_play();
+			}
+			else if (main_menu_choice == 3)
+			{
+				credits();
+			}
+			else if (main_menu_choice == 4)
+			{
+				cout << "Exiting the game. Goodbye!" << endl;
+				return 0;
+			}
+			else
+			{
+				cout << "Invalid choice. Please restart the game and select a valid option." << endl;
+				return 0;
+			}
+		}
+	return 0;
+}
+	
+
 int welcome() {
+	system("cls");
 	cout << "  _____   _____   _____   _____  __  __          ___   _____ " << endl;
 	cout << " |  __ \\ |  __ \\ |_   _| / ____||  \\/  |        |__ \\ | ____|"<< endl;
 	cout << " | |__) || |__) |  | |  | (___  | \\  / |  ______   ) || |__  "<< endl;
@@ -45,9 +282,8 @@ int main_menu() {
 	cout << "Options :\n";
 	cout << "1. Start the Game" << endl;
 	cout << "2. How to play" << endl;
-	cout << "3. About" << endl;
-	cout << "4. Credits" << endl;
-	cout << "5. Exit" << endl;
+	cout << "3. Credits" << endl;
+	cout << "4. Exit" << endl;
 
 	cout << "Enter your choice: ";
 	int main_menu_choice;
@@ -62,6 +298,7 @@ void Level_1() {
 
 	char hint;
 	bool phoneFound = false, phoneUnlocked=false;
+	system("cls");
 	cout << R"(
 
 		  ____    _    ____  _____   _____ ___ _     _____
@@ -162,6 +399,8 @@ void Level_1() {
 				cout << "\n_____________________________________\n";
 				cout << "\n[ PHONE LOCK ]\n";
 				string cypher1 = "VSLGHU LQ WKH GDUN";
+				//string cypher1 = "VSLGHU LQ WKH GDUN"
+				//answer1 = "SPIDER IN THE DARK"
 				cout << "Encrypted Message: " << cypher1;
 				cout << "\nCaesar cipher shift: 3";
 				cout << "\n_____________________________________\n";
@@ -170,7 +409,7 @@ void Level_1() {
 				timer(&answer1, time1);
 				cout << "\nTime taken: " << time1 << " seconds";
 
-				//Make it lowercase for comparison
+				//Make it uppercase for comparison
 
 				for (int i = 0; i < answer1.length(); i++) {
 					answer1[i] = toupper(answer1[i]);
@@ -502,6 +741,10 @@ void Level_3() {
 					cout << hex_values[i] << " ";
 				}
 
+				//cipher = 0x18, 0x1F, 0x6B, 0x01, 0x1E, 0x0F, 0x0E, 0x6B, 0x1B, 0x18, 0x12, 0x08, 0x03, 0x02, 0x0A, 0x1F, 0x19, 0x02, 0x08, 0x6B, 0x08, 0x07, 0x02, 0x05, 0x02, 0x08
+				//answer string = "ST JUDE PSYCHIATRIC CLINIC"
+
+
 				cout << dec;
 
 				for (int i = 0; i < size_hex_cypher; i++) {
@@ -535,7 +778,7 @@ void Level_3() {
 				cout << "\n\nEnter the decrypted text with spaces: ";
 				timer(&answer3, time3);
 
-				//Make it lowercase for comparison
+				//Make it uppercase for comparison
 
 				for (int i = 0; i < answer3.length(); i++) {
 					answer3[i] = toupper(answer3[i]);
@@ -553,6 +796,7 @@ void Level_3() {
 				if (answer3_accuracy == size_hex_cypher) {
 					answer3_true = true;
 				}
+				answer3_accuracy = 0;
 
 
 				if (answer3_true == true) {
@@ -866,3 +1110,24 @@ void timer(string* timed_answer, int& time) {
 }
 
 
+int credits() {
+	system("cls");
+	cout << R"(
+
+			  ____    ____    _____   ____    ___   _____   ____  
+			 / ___|  |  _ \  | ____| |  _ \  |_ _| |_   _| / ___| 
+			| |      | |_) | |  _|   | | | |  | |    | |   \___ \ 
+			| |___   |  _ <  | |___  | |_| |  | |    | |    ___) |
+			 \____|  |_| \_\ |_____| |____/  |___|   |_|   |____/
+		============================================================
+
+		Hania Nauman
+		Rameen Arjmand
+		Shaheer
+
+		============================================================
+
+)";
+	system("pause");
+	return 0;
+}
