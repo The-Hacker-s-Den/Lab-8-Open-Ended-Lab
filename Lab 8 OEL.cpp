@@ -278,7 +278,6 @@ int main() {
 				Level_2(clues);
 				Level_3();
 				Level_4(clues);
-				ending();
 			}
 			else if (main_menu_choice == 2)
 			{
@@ -1305,6 +1304,7 @@ void ending() {
 
 		------------------------------------------------------------
 )";
+	system("pause");
 	string rank;
 	if (totalscore >= 350) rank = "MASTER DETECTIVE";
 	else if (totalscore >= 250 && totalscore < 350) rank = "SENIOR INVESTIGATOR";
