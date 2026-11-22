@@ -58,7 +58,8 @@ int lore() {
 			The inspiration is from the cdrama The Truth Within. 
 			
 			PRESS ENTER TO READ 
-)";
+
+			)";
 			system("pause");
 			cout << R"(
                         _______________________________
@@ -69,7 +70,8 @@ int lore() {
 			1) Somatic hallucinations that are triggered by light.
 			2) clinical lycanthropy
 			3) Guilt, shame, or detachment		
-)";
+
+			)";
 			system("pause");
 			cout << R"(
                         ______________________________
@@ -81,7 +83,8 @@ int lore() {
 		        (such as psilocybin) as potential treatments for conditions that are difficult to manage,
 			such as TRD . His research papers being highly technical and complex, he was able to
 			hide his true intentions from the public.
-)";
+
+			)";
 			system("pause");
 			cout << R"(
 			______________________________
@@ -90,7 +93,8 @@ int lore() {
 			Dr. Jude Vance is a psychiatrist who has been treating patients with TRD for many years.
 			His treatments remaining ethical before he accidently ended the life of his girlfriend.
 			His personal desire to see her alive led him to test the substance on his similar patients.
-)";
+
+			)";
 			system("pause");
 			cout << R"(
 			_______________________________
@@ -101,7 +105,7 @@ int lore() {
 			distributing the substance to vulnerable individuals within the group, making the business sound ethical.
 
 
-		)";
+			)";
 		system("pause");
 		return 0;
 }
