@@ -79,6 +79,7 @@ int ciphers_help(){
 			1. Caesar Cipher
 			2. Atbash (Reverse Alphabet)
 			3. Single-character XOR Cipher
+			4. Vigenere Cipher
 
 		Enter the number of the cipher to learn more about it, or enter 0 to return to the help menu: )";
 		cin >> ciphers_help;
@@ -154,6 +155,35 @@ int ciphers_help(){
 		This means that the same key is used for both encryption and decryption. To decrypt, you simply
 		XOR the ciphertext with the same key.)";
 		}
+
+		else if (ciphers_help == 4) {
+			system("cls");
+			cout << R"(
+
+				__     __   ___    ____   _____   _   _   _____   ____    _____ 
+				\ \   / /  |_ _|  / ___| | ____| | \ | | | ____| |  _ \  | ____|
+				 \ \ / /    | |  | |  _  |  _|   |  \| | |  _|   | |_) | |  _|  
+				  \ V /     | |  | |_| | | |___  | |\  | | |___  |  _ <  | |___ 
+				   \_/     |___|  \____| |_____| |_| \_| |_____| |_| \_\ |_____|
+                                                                
+					  ____   ___   ____    _   _   _____   ____                     
+					 / ___| |_ _| |  _ \  | | | | | ____| |  _ \                    
+					| |      | |  | |_) | | |_| | |  _|   | |_) |                   
+					| |___   | |  |  __/  |  _  | | |___  |  _ <                    
+					 \____| |___| |_|     |_| |_| |_____| |_| \_\
+
+
+		The Vigenère Cipher is a polyalphabetic substitution cipher that encrypts plaintext
+		using a keyword (key). Unlike the Caesar cipher, which shifts every letter by the same
+		amount, the Vigenère cipher uses multiple shifting values based on the letters of the key, making it harder to decipher through simple frequency analysis.
+
+		The key is repeated until it matches the length of the message, and each letter is
+		encrypted using a shift determined by the corresponding key letter.
+
+
+		)";
+		}
+
 		else if (ciphers_help == 0) {
 			system("cls");
 			return 0;
@@ -477,7 +507,7 @@ void Level_2(string clues[]) {
 	char hint;
 	bool notebookFound = false, notebookDeciphered = false;
 
-	system("cls");
+
 
 
 	cout << R"(
@@ -511,7 +541,6 @@ void Level_2(string clues[]) {
 		Press Enter to go inside the warehouse...
 )";
 
-	cin.ignore(10000, '\n');
 	cin.get();
 
 	cout << R"(
@@ -928,7 +957,6 @@ void Level_4(string clues[]) {
 	char checkNotebook, storeClues, hint;
 	bool computerLocked = true, computerDeciphered = false;
 
-	system("cls");
 
 	cout << R"(
 
@@ -1180,6 +1208,11 @@ ________________________________________________________________________________
 	cout << "       SCORE: " << score_level4 << " / 100\n";
 	cout << "       Puzzle time: " << time4 << " seconds\n";
 	cout << "================================\n";
+
+	system("pause");
+
+	ending();
+
 
 }
 
