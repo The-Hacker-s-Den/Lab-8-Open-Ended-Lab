@@ -249,5 +249,5 @@ score = max(0, 100 - 10 * incorrect - 20 * hintsUsed)
 | **Member** | **Contribution** |
 | --- | --- |
 | Shaheer | Code for verification of answers and the following functions: `timer(), fullscreen(), welcome(), main_menu(), ciphers_help(), credits(), how_to_play()` |
-| Hania Nauman | Project Manager, Story writer, planned the ciphers, wrote the functions for: `Level_2(), Level_4()``,`` ``l``o``r``e``(``)` |
+| Hania Nauman | Project Manager, Story writer, planned the ciphers, wrote the functions for: `Level_2(), Level_4(),lore()` |
 | Rameen Arjmand | Wrote the code for score calculation, assigning the rank and the following functions: &#32;`Level_1(), Level_3(), ending()` |
