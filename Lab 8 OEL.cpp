@@ -21,7 +21,7 @@ int lore();
 int credits();
 int how_to_play();
 int fullscreen();
-
+void ending();
 
 
 int fullscreen(){
@@ -1146,15 +1146,6 @@ becomes a formal arrest for drug trafficking, unlawful human experimentation,
 and accessory to manslaughter.State medical authorities immediately revoke
 St. Jude Clinic's license and seal the facility as a crime scene. However the chemist 
 behind PRISM-25 boarded the international plane 20 min before the raid.
-
-
- _____ _   _ _____   _____ _   _ ____  
-|_   _| | | | ____| | ____| \ | |  _ \ 
-  | | | |_| |  _|   |  _| |  \| | | | |
-  | | |  _  | |___  | |___| |\  | |_| |
-  |_| |_| |_|_____| |_____|_| \_|____/ 											
-               
-
 ______________________________________________________________________________________
  )";
 					computerDeciphered = true;
@@ -1228,4 +1219,78 @@ int credits() {
 )";
 	system("pause");
 	return 0;
+}
+void ending() {
+	system("cls");
+	cout << R"(
+		============================================================
+		                    C A S E   C L O S E D
+		============================================================
+
+		Three weeks later.
+
+		The headlines read the same everywhere:
+
+		   "ST JUDE CLINIC SEALED. DR. VANCE CHARGED."
+
+		Dr. Julian Vance, THE LUMOS, and every supplier tied to
+		PRISM-25 now wait for trial. The victims' families finally
+		have names to put to what happened to them.
+
+		The Hollow's group chat has been taken offline.
+		Its members have been contacted by counselors, this time
+		with real help.
+
+		------------------------------------------------------------
+)";
+	system("pause");
+	cout << R"(
+		But one file never made it into evidence.
+
+		The pharmacy batch tag. The notebook. The override code.
+		Every trail pointed to one alias:
+
+		                      V E S P E R
+
+		No name. No face. Only a seat on an international flight
+		that took off twenty minutes before the raid.
+
+		You close your notebook.
+
+		Somewhere, a chemist is still working.
+
+		"Every grief demands a price.
+		 Every formula hides a sin."
+
+		------------------------------------------------------------
+)";
+	system("pause");
+	string rank;
+	if (totalscore >= 350) rank = "MASTER DETECTIVE";
+	else if (totalscore >= 250 && totalscore < 350) rank = "SENIOR INVESTIGATOR";
+	else if (totalscore >= 150 && totalscore < 250) rank = "JUNIOR INVESTIGATOR";
+	else if (totalscore >= 0 && totalscore < 150) rank = "ROOKIE INVESTIGATOR";
+	system("cls");
+	cout << endl << endl;
+	cout << "		============================================\n";
+	cout << "		              FINAL REPORT\n";
+	cout << "		============================================\n";
+	cout << "       Level 1 - The Web ............." << score_level1 << "/100" << endl;
+	cout << "       Level 2 - The Undercover Drop.." << score_level2 << "/100" << endl;
+	cout << "       Level 3 - The Moth............." << score_level3 << "/100" << endl;
+	cout << "       Level 4 - The Finale..........." << score_level4 << "/100" << endl;
+	cout << "       --------------------------------------------\n";
+	cout << "       TOTAL SCORE : " << totalscore << "/400" << endl;
+	cout << "       RANK : " << rank << endl;
+	cout << R"(
+		        PRISM-25 will return... will you?
+
+		 _____ _   _ _____   _____ _   _ ____  
+		|_   _| | | | ____| | ____| \ | |  _ \ 
+		  | | | |_| |  _|   |  _| |  \| | | | |
+		  | | |  _  | |___  | |___| |\  | |_| |
+		  |_| |_| |_|_____| |_____|_| \_|____/ 
+
+)";
+	system("pause");
 }
