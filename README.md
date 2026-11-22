@@ -87,31 +87,33 @@ Every level has the same loop:
 
 ## 4. Screenshots:
 
-1. ### Main Function:
+### 1. Main Function
 
-&#91;image: image.png\]
+![Main Function](Screenshots/Main%20Function.png)
 
-2. ### Level 1:
+### 2. Level 1
 
-&#91;image: image.png\]
+![Level 1](Screenshots/Level%201.png)
 
-3. ### Level 2:
+### 3. Level 2
 
-&#91;image: image.png\]
+![Level 2](Screenshots/Level%202.png)
 
-4. ### Level 3:
+### 4. Level 3
 
-### &#91;image: image.png\]5. Level 4:
+![Level 3](Screenshots/Level%203.png)
 
-&#91;image: image.png\]
+### 5. Level 4
 
-6. ### Resolution:
+![Level 4](Screenshots/Level%204.png)
 
-&#91;image: image.png\]
+### 6. Resolution
 
-7. ### Ending:
+![Resolution](Screenshots/Resolution.png)
 
-&#91;image: image.png\]
+### 7. Ending
+
+![Ending](Screenshots/Ending.png)
 
 ## 5. Overview
 
