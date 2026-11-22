@@ -121,7 +121,31 @@ PRISM-25 is a Windows console detective game written in C++. The player works th
 
 Story premise: a drug named PRISM-25 is linked to a series of deaths. The player follows a chat group ("THE HOLLOW"), a dealer ("THE LUMOS"), a clinic (St Jude Psychiatric Clinic) and a chemist alias ("VESPER"). The lore screen credits the TV drama *The Truth Within* as inspiration.
 
-## 6. Requirements and Build
+## 6. Lore
+
+The story takes inspiration from the TV drama *The Truth Within*.
+
+### PRISM-25
+
+PRISM-25 is an LSD-like psychedelic. It can trigger somatic hallucinations caused by light, clinical lycanthropy, and feelings of guilt, shame or detachment.
+
+### The chemist
+
+The chemist behind PRISM-25 worked as a university professor until his wife's diagnosis with treatment-resistant depression (TRD) disrupted his peaceful life. Under the guise of research, he investigated LSD and similar compounds, including psilocybin, as possible treatments for difficult conditions such as TRD.
+
+His highly technical and complex research papers hid his true intentions from the public. His work eventually led to the substance known as PRISM-25.
+
+### Dr. Jude Vance
+
+Dr. Jude Vance is a psychiatrist who treated patients with TRD for many years. His treatments were ethical until he accidentally caused the death of his girlfriend. Driven by the personal desire to see her alive again, he began testing PRISM-25 on similar patients at St Jude Psychiatric Clinic.
+
+### The Lumos
+
+The Lumos is a mysterious figure who operates within the online community called **THE HOLLOW**. With a history of gang leadership and criminal activity, he becomes an experienced supplier of PRISM-25.
+
+He distributes the substance to vulnerable people in the group and presents the business as ethical help.
+
+## 7. Requirements and Build
 
 | Item | Detail |
 | --- | --- |
@@ -132,7 +156,7 @@ Story premise: a drug named PRISM-25 is linked to a series of deaths. The player
 
 The program will not compile or behave correctly on Linux or macOS because of `windows.h`, `cls` and `pause`.
 
-## 7. Program Flow
+## 8. Program Flow
 
 ```
 main()
@@ -149,7 +173,7 @@ main()
 
 An invalid main-menu choice prints an error and terminates the program (`return 0`).
 
-## 8. Global State
+## 9. Global State
 
 | Variable | Type | Purpose |
 | --- | --- | --- |
@@ -158,7 +182,7 @@ An invalid main-menu choice prints an error and terminates the program (`return 
 
 Local state shared between levels is carried by `string clues[4]`, created in `main()`. Only `clues[1]` is used: Level 2 stores the code `"8492"` there, Level 4 reads it.
 
-## 9. Function Reference
+## 10. Function Reference
 
 | Function | Signature | Description |
 | --- | --- | --- |
@@ -177,7 +201,7 @@ Local state shared between levels is carried by `string clues[4]`, created in `m
 | `timer` | `void timer(string*, int&)` | Reads one line of input into the string pointer and adds the elapsed whole seconds to the `int` reference. Uses `chrono::steady_clock` and `getline(cin >> ws, ...)`. |
 | `ending` | `void ending()` | Epilogue, rank calculation and final report. |
 
-## 10. Level Structure
+## 11. Level Structure
 
 All four levels follow the same pattern:
 
@@ -216,7 +240,7 @@ The player types the **decrypted** message. The code does not decrypt the stored
 
 **Level 4.** Option 2 asks for the 4-digit code (`8492`) with 3 attempts (`passwordLimit`). After a wrong attempt the player may check the notebook. The notebook reveals the code only if it was saved in Level 2. Option 3 (Vigenère file) requires the computer to be unlocked. On success `computerDeciphered` ends the loop and `ending()` runs.
 
-## 11. Scoring
+## 12. Scoring
 
 Per level:
 
@@ -238,13 +262,13 @@ score = max(0, 100 - 10 * incorrect - 20 * hintsUsed)
 | 150 - 249 | JUNIOR INVESTIGATOR |
 | 0 - 149 | ROOKIE INVESTIGATOR |
 
-## 12. Collaborators:
+## 13. Collaborators:
 
 1. Shaheer
 2. Hania Nauman
 3. Rameen Arjmand
 
-## 13. Member's Contributions:
+## 14. Member's Contributions:
 
 | **Member** | **Contribution** |
 | --- | --- |
