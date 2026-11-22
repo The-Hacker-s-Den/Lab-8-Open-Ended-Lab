@@ -59,7 +59,7 @@ int lore() {
 			
 			PRESS ENTER TO READ 
 )";
-			cin.get();
+			system("pause");
 			cout << R"(
                         _______________________________
 			PRISM-25
@@ -70,7 +70,7 @@ int lore() {
 			2) clinical lycanthropy
 			3) Guilt, shame, or detachment		
 )";
-			cin.get();
+			system("pause");
 			cout << R"(
                         ______________________________
 			THE CHEMIST:
@@ -82,7 +82,7 @@ int lore() {
 			such as TRD . His research papers being highly technical and complex, he was able to
 			hide his true intentions from the public.
 )";
-			cin.get();
+			system("pause");
 			cout << R"(
 			______________________________
 			DR JUDE VANCE:
@@ -91,7 +91,7 @@ int lore() {
 			His treatments remaining ethical before he accidently ended the life of his girlfriend.
 			His personal desire to see her alive led him to test the substance on his similar patients.
 )";
-			cin.get();
+			system("pause");
 			cout << R"(
 			_______________________________
 			THE LUMOS:
