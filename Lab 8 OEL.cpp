@@ -44,7 +44,7 @@ int fullscreen(){
 
 int lore() {
 		system("cls");
-	cout << R"(
+		cout << R"(
 				
 				 _         ____     _____     ______ 
 				| |       / __ \   |  __ \   |  ____|
@@ -55,7 +55,52 @@ int lore() {
 
 		===========================================================================
 
-			The inspiration is fron the cdrama The Truth Within.
+			The inspiration is from the cdrama The Truth Within. 
+			
+			PRESS ENTER TO READ 
+)";
+			cin.get();
+			cout << R"(
+                        _______________________________
+			PRISM-25
+			_______________________________
+			PRISM-25 is an LSD-like substance that is a type of psychedelic.
+			symptoms include:
+			1) Somatic hallucinations that are triggered by light.
+			2) clinical lycanthropy
+			3) Guilt, shame, or detachment		
+)";
+			cin.get();
+			cout << R"(
+                        ______________________________
+			THE CHEMIST:
+			______________________________
+			The chemist behind the substance worked as a professor at a university,
+			However, his peaceful life was disrupted when his wife was diagnosed with a TRD.
+			Under the guise of researching, he started investigating LSD and similar compounds
+		        (such as psilocybin) as potential treatments for conditions that are difficult to manage,
+			such as TRD . His research papers being highly technical and complex, he was able to
+			hide his true intentions from the public.
+)";
+			cin.get();
+			cout << R"(
+			______________________________
+			DR JUDE VANCE:
+			______________________________
+			Dr. Jude Vance is a psychiatrist who has been treating patients with TRD for many years.
+			His treatments remaining ethical before he accidently ended the life of his girlfriend.
+			His personal desire to see her alive led him to test the substance on his similar patients.
+)";
+			cin.get();
+			cout << R"(
+			_______________________________
+			THE LUMOS:
+			_______________________________
+			The Lumos is a mysterious figure who operates within the online community known as "The Hollow."
+			He has criminal history of leading gangs, he becomes a major experienced supplier of PRISM-25,
+			distributing the substance to vulnerable individuals within the group, making the business sound ethical.
+
+
 		)";
 		system("pause");
 		return 0;
