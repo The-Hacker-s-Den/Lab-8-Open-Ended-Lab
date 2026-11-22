@@ -367,9 +367,9 @@ int main_menu() {
 	cout << "2. How to play" << endl;
 	cout << "3. Credits" << endl;
 	cout << "4. Exit" << endl;
-
-	cout << "Enter your choice: ";
 	int main_menu_choice;
+	cin.ignore(); // Clear the input buffer
+	cout << "Enter your choice: ";
 	cin >> main_menu_choice;
 	return main_menu_choice;
 }
@@ -1261,7 +1261,6 @@ ________________________________________________________________________________
 	cout << "================================\n";
 	system("pause");
 
-	system("pause");
 
 	ending();
 
