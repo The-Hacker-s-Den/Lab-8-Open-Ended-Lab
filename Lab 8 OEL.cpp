@@ -242,10 +242,13 @@ int main() {
 			main_menu_choice = main_menu();
 			if (main_menu_choice == 1)
 			{
+				totalscore = 0;
+				clues[1] = "";
 				Level_1();
 				Level_2(clues);
 				Level_3();
 				Level_4(clues);
+				ending();
 			}
 			else if (main_menu_choice == 2)
 			{
@@ -466,6 +469,7 @@ ______________________________________________________________________________
 		cout << "       SCORE: " << score_level1 << " / 100\n";
 		cout << "       Puzzle time: " << time1 << " seconds\n";
 		cout << "================================\n";
+		system("pause");
 		
 }
 
@@ -510,8 +514,6 @@ void Level_2(string clues[]) {
 		------------------------------------------------------------
 		Press Enter to go inside the warehouse...
 )";
-
-	cin.ignore(10000, '\n');
 	cin.get();
 
 	cout << R"(
@@ -595,7 +597,7 @@ void Level_2(string clues[]) {
 				cout << "Encrypted Message: " << cipher2;
 				cout << "\nCipher Type: Atbash (Reverse Alphabet)";
 				cout << "\n________________________________________________\n";
-				cout << "\nEnter the decrypted message without spaces in UPPER/LOWERCASE: ";
+				cout << "\nEnter the decrypted message with spaces: ";
 				timer(&answer2, time2);
 
 				int size_cipher2 = cipher2.length();
@@ -690,12 +692,14 @@ ______________________________________________________________________________
 			cout << "================================\n";
 		}
 	}
+	system("pause");
 }
 void Level_3() {
 	bool tagDecoded = false, packFound=false;
 	int choice = 0, time3 = 0, hintsUsed = 0,incorrect=0;
 	char hint;
 	string answer3;
+	system("cls");
 	cout << R"(
 
 		  ____    _    ____  _____   _____ ___ _     _____
@@ -835,9 +839,11 @@ void Level_3() {
 
 				int answer3_accuracy = 0;
 
-				for (int i = 0; i < size_hex_cypher; i++) {
-					if (answer3[i] == cypher3_solved[i]) {
-						answer3_accuracy++;
+				if ((int)answer3.length() == size_hex_cypher) {
+					for (int i = 0; i < size_hex_cypher; i++) {
+						if (answer3[i] == cypher3_solved[i]) {
+							answer3_accuracy++;
+						}
 					}
 				}
 
@@ -914,7 +920,7 @@ ________________________________________________________________________________
 	cout << "       SCORE: " << score_level3 << " / 100\n";
 	cout << "       Puzzle time: " << time3 << " seconds\n";
 	cout << "================================\n";
-
+	system("pause");
 
 }
 
@@ -1180,6 +1186,7 @@ ________________________________________________________________________________
 	cout << "       SCORE: " << score_level4 << " / 100\n";
 	cout << "       Puzzle time: " << time4 << " seconds\n";
 	cout << "================================\n";
+	system("pause");
 
 }
 
@@ -1264,7 +1271,6 @@ void ending() {
 
 		------------------------------------------------------------
 )";
-	system("pause");
 	string rank;
 	if (totalscore >= 350) rank = "MASTER DETECTIVE";
 	else if (totalscore >= 250 && totalscore < 350) rank = "SENIOR INVESTIGATOR";
